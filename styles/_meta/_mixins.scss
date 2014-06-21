@@ -1,0 +1,51 @@
+/* ==========================================================================
+  Mixins
+========================================================================== */
+
+
+@mixin fontDefault() {
+  font-family: $fontDefault;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin fontHighlight() {
+  font-family: $fontHighlight;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@mixin breakpoint($point) {
+  @if $point == xSmall {
+    @media (max-width: $xSmall)  { @content; }
+  }
+  @else if $point == small {
+    @media (max-width: $small)  { @content; }
+  }
+  @else if $point == medium {
+    @media (min-width: $small + 1) and (max-width: $medium) { @content; }
+  }
+  @else if $point == large {
+    @media (min-width: $medium + 1) and (max-width: $large) { @content; }
+  }
+}
+
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+@mixin placeholder($color) {
+  &:-moz-placeholder { color: $color; }
+  &::-moz-placeholder { color: $color; }
+  &:-ms-input-placeholder { color: $color; }
+  &::-webkit-input-placeholder { color: $color; }
+}

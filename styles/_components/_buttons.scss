@@ -1,0 +1,36 @@
+/* ==========================================================================
+  Button
+========================================================================== */
+
+
+.btn {
+  display: inline-block;
+  padding: (($lineHeight / 2) - 1) 32px;
+  margin-bottom: $lineHeight / 2;
+  margin-top: $lineHeight / 2;
+  min-height: $lineHeight;
+  text-align: center;
+  font-family: $fontHighlight;
+  font-weight: 600;
+  text-decoration: none;
+  outline: 0;
+  background: $colorBtn;
+  color: $colorText;
+  border: 1px solid darken($colorBtn, 10%);
+  &:hover,
+  &:focus {
+    background: #4d4d4d;
+    color: #ffffff;
+    border: 1px solid #4d4d4d;
+    text-decoration: none;
+  }
+
+  &.btn--primary {
+    font-size: 16px;
+    padding: (($lineHeight / 2) - 1) 32px;
+  }
+  &.btn--secondary {
+    font-size: 14px;
+    padding: (($lineHeight / 2) - 1) 32px;
+  }
+}

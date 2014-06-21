@@ -1,0 +1,99 @@
+/* ==========================================================================
+  Classes
+========================================================================== */
+
+
+/*==========  FLOATS/ORDER  ==========*/
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+
+
+/*==========  TEXT  ==========*/
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+
+/*==========  VERTICAL CENTERING  ==========*/
+
+.v-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.flex-v-align {
+  align-items: center;
+}
+
+.flex-b-align {
+  align-items: flex-end;
+}
+
+
+/*==========  HIDE  ==========*/
+
+.hide {
+  display: none;
+  visibility: hidden;
+}
+
+.tablet-hide {
+  @include breakpoint(medium) {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.mobile-hide {
+  @include breakpoint(small) {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+
+/*==========  UTILITIES  ==========*/
+
+.break {
+  display: block;
+
+  @include breakpoint(large) {
+    display: inline;
+  }
+  @include breakpoint(medium) {
+    display: inline;
+  }
+  @include breakpoint(small) {
+    display: inline;
+  }
+}
+
+.clearfix {
+  @include clearfix();
+}

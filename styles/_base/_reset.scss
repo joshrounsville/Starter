@@ -1,0 +1,182 @@
+/* ==========================================================================
+  Based on - normalize.css v1.1.1 | MIT License | git.io/normalize
+========================================================================== */
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+html {
+  background: #fff;
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @include breakpoint(medium) {
+    -webkit-text-size-adjust: none;
+  }
+  @include breakpoint(small) {
+    -webkit-text-size-adjust: none;
+  }
+}
+
+body {
+  @include fontDefault();
+  color: $colorText;
+  margin: 0;
+  line-height: $lineHeight;
+
+  @include breakpoint(medium) {
+    margin-bottom: 1px;
+  }
+  @include breakpoint(small) {
+    padding-bottom: 1px;
+    margin-bottom: 1px;
+  }
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden] {
+  display: none;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+blockquote {
+  margin: 1em 40px;
+}
+
+dfn {
+  font-style: italic;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+pre {
+  margin: 1em 0;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace;
+  font-size: 1em;
+}
+
+q {
+  quotes: none;
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+dl,
+menu,
+ol {
+  margin: 1em 0;
+}
+
+dd {
+  margin: 0 0 0 40px;
+}
+
+menu,
+ol {
+  padding: 0 0 0 40px;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 0;
+}
+
+::-moz-selection {
+  background: $colorText;
+  color: #fff;
+  text-shadow: none;
+}
+
+::selection {
+  background: $colorText;
+  color: #fff;
+  text-shadow: none;
+}
