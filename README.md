@@ -1,2 +1,2 @@
-Starter - V 2.0
+Starter - v 2.0
 =======
