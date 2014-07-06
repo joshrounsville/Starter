@@ -9,7 +9,6 @@
 }
 
 html {
-  background: #fff;
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   @include breakpoint(medium) {
@@ -21,10 +20,7 @@ html {
 }
 
 body {
-  @include fontDefault();
-  color: $colorText;
   margin: 0;
-  line-height: $lineHeight;
 
   @include breakpoint(medium) {
     margin-bottom: 1px;

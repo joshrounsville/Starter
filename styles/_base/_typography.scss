@@ -6,13 +6,17 @@ html, body, button {
   font-smoothing: antialiased;
 }
 
+body {
+  @include fontDefault();
+  color: $colorText;
+  line-height: $lineHeight;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
 p, ul, ol {
-  @include fontDefault();
-  font-size: $fontBase;
   padding: 0 0 15px;
 }
 
