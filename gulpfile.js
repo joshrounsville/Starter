@@ -71,7 +71,7 @@ gulp.task('minify', function(){
 });
 
 gulp.task('images', function () {
-  return gulp.src('./images/**')
+  return gulp.src('./img/**')
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
     .pipe(livereload(server));
 });
