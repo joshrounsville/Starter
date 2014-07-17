@@ -8,6 +8,7 @@ html, body, button {
 
 body {
   @include fontDefault();
+  font-size: $fontBase;
   color: $colorText;
   line-height: $lineHeight;
 }

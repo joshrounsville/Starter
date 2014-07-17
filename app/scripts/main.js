@@ -1,3 +1,5 @@
+'use strict';
+
 $(function() {
 
   // set booleans for window size
