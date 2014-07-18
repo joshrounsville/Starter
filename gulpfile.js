@@ -11,6 +11,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
+var scp = require('gulp-scp');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -78,23 +79,9 @@ gulp.task('styles:css', function () {
     .pipe($.size({title: 'styles:css'}));
 });
 
-// Compile Sass For Style Guide Components (app/styles/components)
+// Compile Sass For Style Guide Components (app/styles)
 gulp.task('styles:components', function () {
   return gulp.src('app/styles/components.scss')
-    .pipe($.rubySass({
-      style: 'expanded',
-      precision: 10,
-      loadPath: ['app/styles/components']
-    }))
-    .on('error', console.error.bind(console))
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('app/styles/components'))
-    .pipe($.size({title: 'styles:components'}));
-});
-
-// Compile Any Other Sass Files You Added (app/styles)
-gulp.task('styles:scss', function () {
-  return gulp.src(['app/styles/**/*.scss', '!app/styles/components/components.scss'])
     .pipe($.rubySass({
       style: 'expanded',
       precision: 10,
@@ -102,12 +89,13 @@ gulp.task('styles:scss', function () {
     }))
     .on('error', console.error.bind(console))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('.tmp/styles'))
-    .pipe($.size({title: 'styles:scss'}));
+    .pipe(gulp.dest('app/styles'))
+    .pipe($.size({title: 'styles:components'}));
 });
 
+
 // Output Final CSS Styles
-gulp.task('styles', ['styles:components', 'styles:scss', 'styles:css']);
+gulp.task('styles', ['styles:components', 'styles:css']);
 
 
 
@@ -122,7 +110,7 @@ gulp.task('html', function () {
     .pipe($.useref.restore())
     .pipe($.useref())
     // Update Production Style Guide Paths
-    .pipe($.replace('components/components.css', 'components/main.min.css'))
+    .pipe($.replace('components.css', 'main.min.css'))
     // Minify Any HTML
     .pipe($.if('*.html', $.minifyHtml()))
     // Output Files
@@ -143,7 +131,7 @@ gulp.task('default', function () {
   });
 
   gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.scss'], ['styles:components', 'styles:scss']);
+  gulp.watch(['app/styles/**/*.scss'], ['styles:components']);
   gulp.watch(['{.tmp,app}/styles/**/*.css'], ['styles:css', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['jshint']);
   gulp.watch(['app/images/**/*'], reload);
@@ -163,6 +151,19 @@ gulp.task('serve:dist', ['build'], function () {
 // Build Production Files, the Default Task
 gulp.task('build', ['clean'], function (cb) {
   runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'copy', 'copyVendors'], cb);
+});
+
+
+var ssh = require('sshCreds.json');
+
+gulp.task('publish', function () {
+  gulp.src('/dist*', {base : '/dist'})
+    .pipe(scp({
+      host: ssh.host,
+      user: ssh.user,
+      port: ssh.port,
+      path: ssh.path
+  }));
 });
 
 
