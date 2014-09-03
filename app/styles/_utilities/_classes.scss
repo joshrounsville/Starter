@@ -39,21 +39,32 @@
 
 
 
-/*==========  VERTICAL CENTERING  ==========*/
+/*==========  BACKGROUND  ==========*/
 
-.v-align {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+.bg-white {
+  background-color: #fff;
 }
+
+.bg-gray {
+  background-color: $colorGrayLight;
+}
+
+
+
+/*==========  VERTICAL ALIGNMENT  ==========*/
 
 .flex-v-align {
   align-items: center;
 }
 
+.flex-t-align {
+  align-items: flex-start;
+}
+
 .flex-b-align {
   align-items: flex-end;
 }
+
 
 
 /*==========  HIDE  ==========*/
@@ -76,6 +87,7 @@
     visibility: hidden;
   }
 }
+
 
 
 /*==========  UTILITIES  ==========*/

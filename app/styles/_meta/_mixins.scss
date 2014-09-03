@@ -6,13 +6,13 @@
 @mixin fontDefault() {
   font-family: $fontDefault;
   font-style: normal;
-  font-weight: 300;
+  font-weight: normal;
 }
 
 @mixin fontHighlight() {
   font-family: $fontHighlight;
   font-style: normal;
-  font-weight: 500;
+  font-weight: normal;
 }
 
 @mixin breakpoint($point) {
@@ -28,6 +28,13 @@
   @else if $point == large {
     @media (min-width: $medium + 1) and (max-width: $large) { @content; }
   }
+}
+
+
+@mixin vAlign() {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 

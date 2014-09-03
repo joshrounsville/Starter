@@ -5,32 +5,27 @@
 
 .btn {
   display: inline-block;
-  padding: (($lineHeight / 2) - 1) 32px;
-  margin-bottom: $lineHeight / 2;
-  margin-top: $lineHeight / 2;
-  min-height: $lineHeight;
+  padding: 10px 32px 9px;
   text-align: center;
-  font-family: $fontHighlight;
   font-weight: 600;
   text-decoration: none;
   outline: 0;
   background: $colorBtn;
   color: $colorText;
-  border: 1px solid darken($colorBtn, 10%);
+  border: 1px solid $colorBtn;
   &:hover,
   &:focus {
     background: #4d4d4d;
-    color: #ffffff;
+    color: #fff;
     border: 1px solid #4d4d4d;
-    text-decoration: none;
   }
 
   &.btn--primary {
-    font-size: 16px;
-    padding: (($lineHeight / 2) - 1) 32px;
+    font-size: $fontLarge;
+    padding: 13px 42px 12px;
   }
   &.btn--secondary {
-    font-size: 14px;
-    padding: (($lineHeight / 2) - 1) 32px;
+    font-size: $fontSmall;
+    padding: 8px 28px;
   }
 }

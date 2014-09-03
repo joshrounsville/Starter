@@ -18,14 +18,12 @@ $margin: 50px;
 
 /*==========  COLORS  ==========*/
 
-$colorGrayBackground: #f0f0f0 !default;
-$colorGrayKeyline: #e0e0e0 !default;
 $colorGray: #737373 !default;
 $colorGrayDark: #404040 !default;
+$colorGrayLight: #bbb !default;
 
 $colorText: $colorGrayDark !default;
-$colorHighlight: #ff0000 !default;
-$colorBtn: $colorHighlight !default;
+$colorBtn: #333 !default;
 
 $colorLink: #333 !default;
 
@@ -48,6 +46,3 @@ $lineHeightHeader: 1.2 !default;
 
 $fontDefault: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 $fontHighlight: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-
-
-$animationEasing: cubic-bezier(0.455, 0.030, 0.515, 0.955) !default;

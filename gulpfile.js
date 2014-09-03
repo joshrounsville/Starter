@@ -11,7 +11,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
-var scp = require('gulp-scp');
+//var scp = require('gulp-scp');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -154,17 +154,17 @@ gulp.task('build', ['clean'], function (cb) {
 });
 
 
-var ssh = require('sshCreds.json');
+// var ssh = require('sshCreds.json');
 
-gulp.task('publish', function () {
-  gulp.src('/dist*', {base : '/dist'})
-    .pipe(scp({
-      host: ssh.host,
-      user: ssh.user,
-      port: ssh.port,
-      path: ssh.path
-  }));
-});
+// gulp.task('publish', function () {
+//   gulp.src('/dist*', {base : '/dist'})
+//     .pipe(scp({
+//       host: ssh.host,
+//       user: ssh.user,
+//       port: ssh.port,
+//       path: ssh.path
+//   }));
+// });
 
 
 // Load custom tasks from the `tasks` directory
