@@ -11,10 +11,13 @@
 @import "_base/fonts", "_base/reset", "_base/grid", "_base/typography";
 
 
+/**** import elements ****/
+@import "_elements/forms", "_elements/tables";
+@import "_elements/media", "_elements/lists", "_elements/links";
+
+
 /**** import components ****/
 @import "_components/buttons", "_components/icons", "_components/font-awesome";
-@import "_components/forms", "_components/tables";
-@import "_components/lists", "_components/media", "_components/links";
 
 
 /**** import sections ****/

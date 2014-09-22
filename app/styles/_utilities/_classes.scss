@@ -51,7 +51,7 @@
 
 
 
-/*==========  VERTICAL ALIGNMENT  ==========*/
+/*==========  ALIGNMENT  ==========*/
 
 .flex-v-align {
   align-items: center;
@@ -106,6 +106,6 @@
   }
 }
 
-.clearfix {
-  @include clearfix();
-}
+
+
+
