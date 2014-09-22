@@ -26,5 +26,36 @@ $(function() {
   }
 
 
+  //////// carousel setup
+  var slider = $('.slider');
+
+  slider.owlCarousel({
+    items : 3,
+    itemsDesktop : [1199, 4],
+    itemsDesktopSmall : [980, 3],
+    itemsTablet: [768, 2],
+    itemsTabletSmall: false,
+    itemsMobile : [479, 1],
+    slideSpeed : 200,
+    paginationSpeed : 800,
+    rewindSpeed : 1000,
+    autoPlay : false,
+    stopOnHover : true,
+    navigation : true,
+    rewindNav : true,
+    scrollPerPage : false,
+    pagination : true,
+    paginationNumbers: false,
+    responsive: true,
+    responsiveRefreshRate : 200,
+    responsiveBaseWidth: window,
+    baseClass : 'owl-carousel',
+    mouseDrag : false
+  });
+
+
+
+
+
 
 });

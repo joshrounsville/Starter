@@ -32,3 +32,84 @@
     opacity: 0;
   }
 }
+
+
+
+/*==========  BACK SLIDE OUT  ==========*/
+
+@keyframes backSlideOut {
+  25% {
+    opacity: .5;
+    transform: translateZ(-500px);
+  }
+  75% {
+    opacity: .5;
+    transform: translateZ(-500px) translateX(-200%);
+  }
+  100% {
+    opacity: .5;
+    transform: translateZ(-500px) translateX(-200%);
+  }
+}
+
+
+
+/*==========  BACK SLIDE IN  ==========*/
+
+@keyframes backSlideIn {
+  0%, 25% {
+    opacity: .5;
+    transform: translateZ(-500px) translateX(200%);
+  }
+  75% {
+    opacity: .5;
+    transform: translateZ(-500px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateZ(0) translateX(0);
+  }
+}
+
+
+
+/*==========  SCALE TO FADE  ==========*/
+
+@keyframes scaleToFade {
+  to {
+    opacity: 0;
+    transform: scale(.8);
+  }
+}
+
+
+
+/*==========  GO DOWN  ==========*/
+
+@keyframes goDown {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+
+
+/*==========  SCALE UP FROM  ==========*/
+
+@keyframes scaleUpFrom {
+  from {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+
+
+/*==========  SCALE UP TO  ==========*/
+
+@keyframes scaleUpTo {
+  to {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
