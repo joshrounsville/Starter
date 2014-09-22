@@ -98,21 +98,26 @@ gulp.task('styles:components', function () {
 gulp.task('styles', ['styles:components', 'styles:css']);
 
 
-
 // Scan Your HTML For Assets & Optimize Them
 gulp.task('html', function () {
+  var assets = $.useref.assets({searchPath: '{.tmp,app}'});
+
   return gulp.src('app/**/*.html')
-    .pipe($.useref.assets({searchPath: '{.tmp,app}'}))
+    .pipe(assets)
     // Concatenate And Minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+
     // Concatenate And Minify Styles
     .pipe($.if('*.css', $.csso()))
-    .pipe($.useref.restore())
+    .pipe(assets.restore())
     .pipe($.useref())
+
     // Update Production Style Guide Paths
     .pipe($.replace('components.css', 'main.min.css'))
+
     // Minify Any HTML
     .pipe($.if('*.html', $.minifyHtml()))
+
     // Output Files
     .pipe(gulp.dest('dist'))
     .pipe($.size({title: 'html'}));
