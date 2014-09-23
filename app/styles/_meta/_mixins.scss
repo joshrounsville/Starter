@@ -23,10 +23,10 @@
     @media (max-width: $small)  { @content; }
   }
   @else if $point == medium {
-    @media (min-width: $small + 1) and (max-width: $medium) { @content; }
+    @media (max-width: $medium) { @content; }
   }
   @else if $point == large {
-    @media (min-width: $medium + 1) and (max-width: $large) { @content; }
+    @media (max-width: $large) { @content; }
   }
 }
 
