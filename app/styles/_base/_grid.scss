@@ -13,7 +13,7 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  max-width: 1170px;
+  width: $large;
   @include clearfix();
 }
 
@@ -110,7 +110,7 @@
 @include breakpoint(large) {
 
   .container {
-    max-width: 970px;
+    width: $medium;
     padding-right: 10px;
     padding-left: 10px;
   }
@@ -207,7 +207,7 @@
 @include breakpoint(medium) {
 
   .container {
-    max-width: 750px;
+    width: $small;
     padding-right: 10px;
     padding-left: 10px;
   }
@@ -323,8 +323,8 @@
     display: block;
     float: none;
     width: auto;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 
   [class*="span-s"] {
