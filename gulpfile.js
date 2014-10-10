@@ -83,6 +83,7 @@ gulp.task('styles:css', function () {
 gulp.task('styles:components', function () {
   return gulp.src('app/styles/components.scss')
     .pipe($.rubySass({
+      //'sourcemap=none': true,
       style: 'expanded',
       precision: 10,
       loadPath: ['app/styles']
@@ -116,7 +117,7 @@ gulp.task('html', function () {
     .pipe($.replace('components.css', 'main.min.css'))
 
     // Minify Any HTML
-    .pipe($.if('*.html', $.minifyHtml()))
+    //.pipe($.if('*.html', $.minifyHtml()))
 
     // Output Files
     .pipe(gulp.dest('dist'))
@@ -155,7 +156,7 @@ gulp.task('serve:dist', ['build'], function () {
 
 // Build Production Files, the Default Task
 gulp.task('build', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'copy', 'copyVendors'], cb);
+  runSequence('styles', ['html', 'jshint', 'images', 'fonts', 'copy', 'copyVendors'], cb);
 });
 
 
