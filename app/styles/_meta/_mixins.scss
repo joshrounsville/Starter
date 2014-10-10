@@ -17,16 +17,16 @@
 
 @mixin breakpoint($point) {
   @if $point == xSmall {
-    @media (max-width: $xSmall)  { @content; }
+    @media ( max-width: $xSmall )  { @content; }
   }
   @else if $point == small {
-    @media (max-width: $small)  { @content; }
+    @media ( max-width: $small + 20 )  { @content; }
   }
   @else if $point == medium {
-    @media (max-width: $medium) { @content; }
+    @media ( max-width: $medium + 20 ) { @content; }
   }
   @else if $point == large {
-    @media (max-width: $large) { @content; }
+    @media ( max-width: $large + 20 ) { @content; }
   }
 }
 
