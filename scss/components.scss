@@ -7,6 +7,10 @@
 @import "_meta/variables", "_meta/mixins";
 
 
+/**** import animations ****/
+@import "_animations/defined";
+
+
 /**** import base styles ****/
 @import "_base/fonts", "_base/reset", "_base/grid", "_base/typography";
 
@@ -26,10 +30,6 @@
 
 /**** import pages ****/
 @import "_pages/home";
-
-
-/**** import animations ****/
-@import "_animations/defined";
 
 
 /**** import classes ****/

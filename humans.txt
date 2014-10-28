@@ -1,0 +1,20 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  The Brigade -- @dasbrigade
+  Ben Fogarty -- Partner -- instagram.com/benfogarty
+  Zeke Howard -- Partner -- instagram.com/zekehoward
+  Jason Moos -- Executive Producer -- instagram.com/jmoos
+  Josh Rounsville -- Senior Developer -- instagram.com/joshrounsville
+
+
+# THANKS
+
+  <name>
+
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3, Node.js, Gulp.js

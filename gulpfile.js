@@ -1,177 +1,113 @@
-/**
-*
-*  Based on the Google Web Starter Kit
-*  https://github.com/google/web-starter-kit
-*
-*/
+// call the plugins and set variables
 
-'use strict';
-
-// Include Gulp & Tools We'll Use
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var del = require('del');
-//var scp = require('gulp-scp');
-var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-
-var AUTOPREFIXER_BROWSERS = [
-  'ie >= 8',
-  'ie_mob >= 10',
-  'ff >= 27',
-  'chrome >= 30',
-  'safari >= 6',
-  'opera >= 20',
-  'ios >= 6',
-  'android >= 4',
-  'bb >= 10'
-];
+var gulp = require('gulp'),
+    autoprefixer = require('gulp-autoprefixer'),
+    sass = require('gulp-ruby-sass'),
+    minifycss = require('gulp-minify-css'),
+    imagemin = require('gulp-imagemin'),
+    pngcrush = require('imagemin-pngcrush'),
+    cache = require('gulp-cache'),
+    jshint = require('gulp-jshint'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'),
+    livereload = require('gulp-livereload'),
+    connect = require ('connect'),
+    http = require('http'),
+    path = require('path'),
+    lr = require('tiny-lr'),
+    server = lr(),
+    cp  = require ('child_process'),
+    port = 3000,
+    gutil = require('gulp-util'),
+    concat = require('gulp-concat'),
+    rimraf = require('gulp-rimraf'),
+    serveStatic = require('serve-static'),
+    serveIndex = require('serve-index');
 
 
 
-// Lint JavaScript
-gulp.task('jshint', function () {
-  return gulp.src('app/scripts/main.js')
-    .pipe(reload({stream: true, once: true}))
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
-});
+// set basic tasks
 
-// Optimize Images
-gulp.task('images', function () {
-  return gulp.src('app/img/**/*')
-    .pipe($.cache($.imagemin({
-      progressive: true,
-      interlaced: true
-    })))
-    .pipe(gulp.dest('dist/img'))
-    .pipe($.size({title: 'images'}));
-});
-
-// Copy All Files At The Root Level (app)
-gulp.task('copy', function () {
-  return gulp.src(['app/*','!app/*.html'], {dot: true})
-    .pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'copy'}));
-});
-
-gulp.task('copyVendors', function () {
-  return gulp.src('app/scripts/vendor/*')
-    .pipe(gulp.dest('dist/scripts/vendor'))
-    .pipe($.size({title: 'copy'}));
-});
-
-// Copy Web Fonts To Dist
-gulp.task('fonts', function () {
-  return gulp.src(['app/fonts/**'])
-    .pipe(gulp.dest('dist/fonts'))
-    .pipe($.size({title: 'fonts'}));
-});
-
-// Automatically Prefix CSS
-gulp.task('styles:css', function () {
-  return gulp.src('app/styles/**/*.css')
-    .pipe($.changed('app/styles'))
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('app/styles'))
-    .pipe($.size({title: 'styles:css'}));
-});
-
-// Compile Sass For Style Guide Components (app/styles)
-gulp.task('styles:components', function () {
-  return gulp.src('app/styles/components.scss')
-    .pipe($.rubySass({
-      //'sourcemap=none': true,
+gulp.task('css', function() {
+  return gulp.src('./scss/components.scss')
+    .pipe(sass({
+      'sourcemap=none': true,
       style: 'expanded',
-      precision: 10,
-      loadPath: ['app/styles']
+      lineNumbers: true
     }))
-    .on('error', console.error.bind(console))
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('app/styles'))
-    .pipe($.size({title: 'styles:components'}));
+    .on('error', gutil.log)
+    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+    .pipe(minifycss())
+    .pipe(rename({
+      basename: 'styles',
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./styles/'))
+    .pipe(livereload(server));
+});
+
+gulp.task('clear', function() {
+  return gulp.src('./styles/*.scss', { read: false })
+    .pipe(rimraf({ force: true }));
+});
+
+gulp.task('lint', function() {
+  return gulp.src('./scripts/main.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
+gulp.task('minify', function(){
+  gulp.src(['./scripts/plugins.js', './scripts/main.js', '!./scripts/vendor/*.js', '!./scripts/*.min.js'])
+    .pipe(concat('scripts.js'))
+    .pipe(uglify())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./scripts/'))
+    .pipe(livereload(server));
+});
+
+gulp.task('images', function () {
+  return gulp.src(['./img/**', '!*.svg'])
+    .pipe(cache(imagemin({
+      optimizationLevel: 5,
+      progressive: true,
+      interlaced: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngcrush()]
+    })))
+    .pipe(livereload(server));
+});
+
+gulp.task('webserver', function() {
+  var hostname = null,
+      base = path.resolve('.'),
+      directory = path.resolve('.');
+
+  var app = connect()
+    .use(serveStatic(base))
+    .use(serveIndex(directory))
+
+  http.createServer(app).listen(port, hostname);
 });
 
 
-// Output Final CSS Styles
-gulp.task('styles', ['styles:components', 'styles:css']);
 
+// set working tasks
 
-// Scan Your HTML For Assets & Optimize Them
-gulp.task('html', function () {
-  var assets = $.useref.assets({searchPath: '{.tmp,app}'});
+gulp.task('run', [ 'css', 'lint', 'minify' ]);
 
-  return gulp.src('app/**/*.html')
-    .pipe(assets)
-    // Concatenate And Minify JavaScript
-    .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+gulp.task('default', [ 'run', 'webserver', 'images' ], function() {
 
-    // Concatenate And Minify Styles
-    .pipe($.if('*.css', $.csso()))
-    .pipe(assets.restore())
-    .pipe($.useref())
+  setTimeout(function() {
+    cp.exec('open http://localhost:' + port);
+  }, 1000);
 
-    // Update Production Style Guide Paths
-    .pipe($.replace('components.css', 'main.min.css'))
+  gulp.watch('./scss/**/*.scss', [ 'css', 'clear' ]);
 
-    // Minify Any HTML
-    //.pipe($.if('*.html', $.minifyHtml()))
+  gulp.watch('./scripts/main.js', [ 'lint' ] );
 
-    // Output Files
-    .pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'html'}));
+  gulp.watch('./scripts/*.js', [ 'minify' ]);
+
 });
-
-// Clean Output Directory
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
-
-// Watch Files For Changes & Reload
-gulp.task('default', function () {
-  browserSync({
-    notify: false,
-    server: {
-      baseDir: ['.tmp', 'app']
-    }
-  });
-
-  gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.scss'], ['styles:components']);
-  gulp.watch(['{.tmp,app}/styles/**/*.css'], ['styles:css', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
-  gulp.watch(['app/images/**/*'], reload);
-});
-
-// Build and serve the output from the dist build
-gulp.task('serve:dist', ['build'], function () {
-  browserSync({
-    notify: false,
-    server: {
-      baseDir: 'dist'
-    }
-  });
-});
-
-
-// Build Production Files, the Default Task
-gulp.task('build', ['clean'], function (cb) {
-  runSequence('styles', ['html', 'jshint', 'images', 'fonts', 'copy', 'copyVendors'], cb);
-});
-
-
-// var ssh = require('sshCreds.json');
-
-// gulp.task('publish', function () {
-//   gulp.src('/dist*', {base : '/dist'})
-//     .pipe(scp({
-//       host: ssh.host,
-//       user: ssh.user,
-//       port: ssh.port,
-//       path: ssh.path
-//   }));
-// });
-
-
-// Load custom tasks from the `tasks` directory
-try { require('require-dir')('tasks'); } catch (err) {}
