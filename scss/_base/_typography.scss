@@ -30,18 +30,54 @@ h1, h2, h3, h4, h5, h6,
 
 .h1, h1 {
   font-size: $fontH1;
+  @include breakpoint(large) {
+    font-size: $fontH1 - 2;
+  }
+  @include breakpoint(medium) {
+    font-size: $fontH1 - 4;
+  }
+  @include breakpoint(small) {
+    font-size: $fontH1 - 6;
+  }
 }
 
 .h2, h2 {
   font-size: $fontH2;
+  @include breakpoint(large) {
+    font-size: $fontH2 - 2;
+  }
+  @include breakpoint(medium) {
+    font-size: $fontH2 - 4;
+  }
+  @include breakpoint(small) {
+    font-size: $fontH2 - 5;
+  }
 }
 
 .h3, h3 {
   font-size: $fontH3;
+  @include breakpoint(large) {
+    font-size: $fontH3 - 2;
+  }
+  @include breakpoint(medium) {
+    font-size: $fontH3 - 3;
+  }
+  @include breakpoint(small) {
+    font-size: $fontH3 - 4;
+  }
 }
 
 .h4, h4 {
   font-size: $fontH4;
+  @include breakpoint(large) {
+    font-size: $fontH4 - 2;
+  }
+  @include breakpoint(medium) {
+    font-size: $fontH4 - 3;
+  }
+  @include breakpoint(small) {
+    font-size: $fontH4 - 4;
+  }
 }
 
 h5, .h5 {

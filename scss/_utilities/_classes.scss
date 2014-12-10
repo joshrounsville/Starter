@@ -65,6 +65,9 @@
   align-items: flex-end;
 }
 
+.v-align {
+  @include vAlign();
+}
 
 
 /*==========  HIDE  ==========*/
@@ -104,6 +107,10 @@
   @include breakpoint(small) {
     display: inline;
   }
+}
+
+.truncate {
+  @include ellipsis();
 }
 
 

@@ -44,6 +44,12 @@
   padding-top: 0;
 }
 
+.pad-t-s--0 {
+  @include breakpoint(small) {
+    padding-top: 0;
+  }
+}
+
 
 
 /*==========  PADDING BOTTOM  ==========*/
@@ -66,6 +72,12 @@
 
 .pad-b--0 {
   padding-bottom: 0;
+}
+
+.pad-b-s--0 {
+  @include breakpoint(small) {
+    padding-bottom: 0;
+  }
 }
 
 
