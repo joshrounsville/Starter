@@ -1,113 +1,111 @@
+'use strict';
+
 // call the plugins and set variables
+var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
+var del = require('del');
+var runSequence = require('run-sequence');
+var browserSync = require('browser-sync');
+var pngcrush = require('imagemin-pngcrush');
+var reload = browserSync.reload;
 
-var gulp = require('gulp'),
-    autoprefixer = require('gulp-autoprefixer'),
-    sass = require('gulp-ruby-sass'),
-    minifycss = require('gulp-minify-css'),
-    imagemin = require('gulp-imagemin'),
-    pngcrush = require('imagemin-pngcrush'),
-    cache = require('gulp-cache'),
-    jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
-    rename = require('gulp-rename'),
-    livereload = require('gulp-livereload'),
-    connect = require ('connect'),
-    http = require('http'),
-    path = require('path'),
-    lr = require('tiny-lr'),
-    server = lr(),
-    cp  = require ('child_process'),
-    port = 3000,
-    gutil = require('gulp-util'),
-    concat = require('gulp-concat'),
-    rimraf = require('gulp-rimraf'),
-    serveStatic = require('serve-static'),
-    serveIndex = require('serve-index');
+var AUTOPREFIXER_BROWSERS = [
+  'ie >= 9',
+  'ie_mob >= 9',
+  'ff >= 30',
+  'chrome >= 34',
+  'safari >= 7',
+  'opera >= 23',
+  'ios >= 7',
+  'android >= 4.4',
+  'bb >= 10'
+];
 
 
+// Lint JavaScript
+gulp.task('jshint', function () {
+  return gulp.src( './scripts/main.js')
+    .pipe(reload({stream: true, once: true}))
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('jshint-stylish'))
+    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
+});
 
-// set basic tasks
 
-gulp.task('css', function() {
-  return gulp.src('./scss/components.scss')
-    .pipe(sass({
-      'sourcemap=none': true,
-      style: 'expanded',
-      lineNumbers: true
+// Minify JavaScript
+gulp.task('minifyJS', function() {
+  return gulp.src([
+      './scripts/plugins.js',
+      './scripts/main.js',
+      '!./scripts/vendor/*.js',
+      '!./scripts/*.min.js'
+    ])
+    .pipe($.concat('scripts.js'))
+    .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+    .pipe($.rename({
+      suffix: '.min'
     }))
-    .on('error', gutil.log)
-    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(minifycss())
-    .pipe(rename({
+    .pipe(gulp.dest('./scripts/'));
+});
+
+
+// Compile and Automatically Prefix Stylesheets
+gulp.task('styles', function () {
+  return gulp.src('./scss/components.scss')
+    .pipe($.changed('styles', {extension: '.scss'}))
+    .pipe($.rubySass({
+      style: 'expanded',
+      precision: 10
+    }))
+    .on('error', console.error.bind(console))
+    .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
+    .pipe($.if('*.css', $.csso()))
+    .pipe($.rename({
       basename: 'styles',
       suffix: '.min'
     }))
-    .pipe(gulp.dest('./styles/'))
-    .pipe(livereload(server));
+    .pipe(gulp.dest('styles'));
 });
 
-gulp.task('clear', function() {
-  return gulp.src('./styles/*.scss', { read: false })
-    .pipe(rimraf({ force: true }));
-});
 
-gulp.task('lint', function() {
-  return gulp.src('./scripts/main.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
-});
-
-gulp.task('minify', function(){
-  gulp.src(['./scripts/plugins.js', './scripts/main.js', '!./scripts/vendor/*.js', '!./scripts/*.min.js'])
-    .pipe(concat('scripts.js'))
-    .pipe(uglify())
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest('./scripts/'))
-    .pipe(livereload(server));
-});
-
+// Optimize Images
 gulp.task('images', function () {
-  return gulp.src(['./img/**', '!*.svg'])
-    .pipe(cache(imagemin({
-      optimizationLevel: 5,
+  return gulp.src(['./img/**/*', '! ./img/**/*.svg'])
+    .pipe($.cache($.imagemin({
+      optimizationLevel: 4,
       progressive: true,
       interlaced: true,
-      svgoPlugins: [{removeViewBox: false}],
       use: [pngcrush()]
     })))
-    .pipe(livereload(server));
-});
-
-gulp.task('webserver', function() {
-  var hostname = null,
-      base = path.resolve('.'),
-      directory = path.resolve('.');
-
-  var app = connect()
-    .use(serveStatic(base))
-    .use(serveIndex(directory))
-
-  http.createServer(app).listen(port, hostname);
+    .pipe(gulp.dest('img'))
+    .pipe($.size({title: 'images'}));
 });
 
 
+// Clear some folders
+gulp.task('clean', del.bind(null, ['.tmp', './styles/*.scss']));
 
-// set working tasks
 
-gulp.task('run', [ 'css', 'lint', 'minify' ]);
+// Watch Files For Changes & Reload
+gulp.task('serve', ['styles'], function () {
+  browserSync({
+    notify: false,
+    server: {
+      baseDir: "./"
+    }
+  });
 
-gulp.task('default', [ 'run', 'webserver', 'images' ], function() {
-
-  setTimeout(function() {
-    cp.exec('open http://localhost:' + port);
-  }, 1000);
-
-  gulp.watch('./scss/**/*.scss', [ 'css', 'clear' ]);
-
-  gulp.watch('./scripts/main.js', [ 'lint' ] );
-
-  gulp.watch('./scripts/*.js', [ 'minify' ]);
-
+  gulp.watch(['./*.html'], reload);
+  gulp.watch(['./scss/**/*.scss'], ['styles']);
+  gulp.watch(['./styles/**/*.css'], reload);
+  gulp.watch(['./scripts/**/*.js', '! ./scripts/**/*.min.js'], ['jshint', 'minifyJS']);
+  gulp.watch(['./scripts/**/*.min.js'], reload);
+  gulp.watch(['./img/**/*'], ['images']);
 });
+
+
+// Build Production Files, the Default Task
+gulp.task('default', ['clean'], function (cb) {
+  runSequence('styles', ['jshint', 'minifyJS', 'images'], cb);
+});
+
