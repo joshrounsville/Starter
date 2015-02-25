@@ -51,6 +51,31 @@
 
 
 
+/*==========  BORDER  ==========*/
+
+.inline-border {
+  position: relative;
+  text-align: center;
+  &:after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    margin-top: -1px;
+  }
+  .text {
+    display: inline-block;
+    background: #333;
+    padding: 0 8px;
+  }
+}
+
+
+
 /*==========  ALIGNMENT  ==========*/
 
 .flex-v-align {
