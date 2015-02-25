@@ -7,25 +7,27 @@
 @import "_meta/variables", "_meta/mixins";
 
 
-/**** import animations ****/
-@import "_animations/defined";
-
-
 /**** import base styles ****/
 @import "_base/fonts", "_base/reset", "_base/grid", "_base/typography";
+
+
+/**** import animations ****/
+@import "_animations/defined";
 
 
 /**** import elements ****/
 @import "_elements/forms", "_elements/tables";
 @import "_elements/media", "_elements/lists", "_elements/links";
+@import "_elements/buttons", "_elements/icons", "_elements/font-awesome";
 
-
-/**** import components ****/
-@import "_components/buttons", "_components/icons", "_components/font-awesome", "_components/carousel";
 
 
 /**** import sections ****/
 @import "_sections/header", "_sections/footer", "_sections/main";
+
+
+/**** import components ****/
+@import "_components/carousel";
 
 
 /**** import pages ****/

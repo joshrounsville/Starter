@@ -13,6 +13,7 @@
   background: $colorBtn;
   color: $colorText;
   border: 1px solid $colorBtn;
+  transition: all 0.13s ease-in-out;
   &:hover,
   &:focus {
     background: #4d4d4d;
