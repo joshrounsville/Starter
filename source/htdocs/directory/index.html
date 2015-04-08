@@ -1,0 +1,23 @@
+@@include('htdocs/_templates/_header.html', {
+  "title": "Template for Bootstrap",
+  "description": "Page Description"
+})
+
+  <section>
+    <div class="container">
+
+      <div class="row">
+
+        <div class="span7">
+          <h1>Test Directory</h1>
+          @@include('htdocs/_templates/_include.html', {
+            "message": "This message is coming from '/directory/index.html' through '/_templates/_include.html'."
+          })
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+@@include('htdocs/_templates/_footer.html')
