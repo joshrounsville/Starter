@@ -1,5 +1,5 @@
 /*
-  Based on Nathan Searles [Day One Gulp Starter Kit](https://github.com/nathansearles/Day-One-Gulp-Starter-Kit)
+  Based on Nathan Searles Day One Gulp Starter Kit - https://github.com/nathansearles/Day-One-Gulp-Starter-Kit
 */
 
 /* ====================================
@@ -42,10 +42,10 @@ gulp.task('serve', ['watch'], function(){
  * Styles
  * ==================================== */
 gulp.task('styles', function () {
-  return gulp.src(source + '/scss/**/style.scss')
+  return gulp.src(source + '/scss/**/components.scss')
     .pipe($.plumber(plumberConfig))
     .pipe($.rubySass())
-    .pipe($.autoprefixer((["last 1 version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
+    .pipe($.autoprefixer((["last 2  version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
     .pipe(gulp.dest(build + '/css/'));
 });
 
@@ -54,7 +54,7 @@ gulp.task('styles', function () {
  * Scripts
  * ==================================== */
  gulp.task('jshint', function() {
-  return gulp.src(source + '/js/script.js')
+  return gulp.src(source + '/js/scripts.js')
     .pipe($.plumber(plumberConfig))
     .pipe($.jshint())
     .pipe($.jshint.reporter('default'));
@@ -73,7 +73,7 @@ gulp.task('scripts', function () {
 gulp.task('images', function() {
   return gulp.src(source + '/img/**/*')
     .pipe($.plumber(plumberConfig))
-    .pipe($.cache($.imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
+    .pipe($.imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
     .pipe(gulp.dest(build + '/img'));
 });
 
@@ -82,25 +82,21 @@ gulp.task('images', function() {
  * HTML
  * ==================================== */
 gulp.task('html-default', function() {
+
   var vendorjs = gulp.src(bowerFiles())
     .pipe($.plumber(plumberConfig))
     .pipe($.filter('**/*.js'))
-    .pipe(gulp.dest(build + '/js'));
+    .pipe(gulp.dest(build + '/js/vendor'));
 
-  var vendorcss = gulp.src(bowerFiles())
+  var modernizrjs = gulp.src(source + '/js/vendor/modernizr.js')
     .pipe($.plumber(plumberConfig))
-    .pipe($.filter('**/*.css'))
-    .pipe(gulp.dest(build + '/css'));
+    .pipe(gulp.dest(build + '/js/vendor'));
 
-  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/**/*'])
-    .pipe($.plumber(plumberConfig))
-    .pipe(gulp.dest(build + '/js'));
-
-  var scriptsHead = gulp.src([source + '/js/vendor/modernizr.js'])
+  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
     .pipe($.plumber(plumberConfig))
     .pipe(gulp.dest(build + '/js'));
 
-  var styles = gulp.src(source + '/scss/**/style.scss')
+  var styles = gulp.src(source + '/scss/**/components.scss')
     .pipe($.plumber(plumberConfig))
     .pipe($.rubySass())
     .pipe($.autoprefixer((["last 2 version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
@@ -115,14 +111,13 @@ gulp.task('html-default', function() {
       prefix: '@@',
       basepath: 'source/'
     }))
-    .pipe($.inject(scriptsHead,
+    .pipe($.inject(modernizrjs,
       { ignorePath: [build, source],
         addRootSlash: true,
-        starttag: '<!-- inject:head:{{ext}} -->'
+        starttag: '<!-- inject:modernizr -->'
       }
     ))
     .pipe($.inject(es.merge(
-        vendorcss,
         vendorjs
       ),
       {
@@ -144,38 +139,24 @@ gulp.task('html-default', function() {
 });
 
 gulp.task('html-build', function() {
-  var vendorjs = gulp.src(bowerFiles())
+
+  var modernizrjs = gulp.src(source + '/js/vendor/modernizr.js')
     .pipe($.plumber(plumberConfig))
-    .pipe($.filter('**/*.js'))
-    .pipe($.concat('vendor.js'))
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(build + '/js'));
+    .pipe(gulp.dest(build + '/js/vendor'));
 
-  var vendorcss = gulp.src(bowerFiles())
+  var scripts = gulp.src(bowerFiles(), [ source + '/js/plugins.js', source + '/js/scripts.js'])
     .pipe($.plumber(plumberConfig))
-    .pipe($.filter('**/*.css'))
-    .pipe($.concat('vendor.css'))
-    .pipe($.minifyCss())
-    .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(build + '/css'));
-
-  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/**/*'])
-    .pipe($.plumber(plumberConfig))
-    .pipe($.concat('script.js'))
+    .pipe($.concat('scripts.js'))
     .pipe($.uglify())
-    .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(build + '/js'));
-
-  var scriptsHead = gulp.src([source + '/js/vendor/modernizr.js'])
-    .pipe($.plumber(plumberConfig))
     .pipe(gulp.dest(build + '/js'));
 
   var styles = gulp.src(source + '/scss/**/*.scss')
     .pipe($.plumber(plumberConfig))
     .pipe($.rubySass())
-    .pipe($.concat('style.css'))
-    .pipe($.autoprefixer((["last 1 version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
+    .pipe($.concat('styles.css'))
+    .pipe($.autoprefixer((["last 2 version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
     .pipe($.minifyCss())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(build + '/css/'));
@@ -189,22 +170,12 @@ gulp.task('html-build', function() {
       prefix: '@@',
       basepath: 'source/'
     }))
-    .pipe($.inject(scriptsHead,
+    .pipe($.inject(modernizrjs,
       { ignorePath: [build, source],
         addRootSlash: true,
-        starttag: '<!-- inject:head:{{ext}} -->'
+        starttag: '<!-- inject:modernizr -->'
       }
     ))
-    .pipe($.inject(es.merge(
-        vendorcss,
-        vendorjs
-      ),
-      {
-        name: 'bower',
-        ignorePath: [build, source],
-        addRootSlash: true
-      }
-      ))
     .pipe($.inject(es.merge(
       styles,
       scripts
@@ -228,9 +199,9 @@ gulp.task('clean', del.bind(null, [build + '/*'], {dot: true}));
  * Copy files
  * ==================================== */
 gulp.task('copyfiles', function() {
-    return gulp.src(source + '/**/*.{ttf,woff,eof,svg,ico}')
-      .pipe($.plumber(plumberConfig))
-      .pipe(gulp.dest(build));
+  return gulp.src(source + '/**/*.{ttf,woff,eof,svg,ico}')
+    .pipe($.plumber(plumberConfig))
+    .pipe(gulp.dest(build));
 });
 
 
