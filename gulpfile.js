@@ -125,7 +125,7 @@ gulp.task('html-default', function() {
         ignorePath: [build, source],
         addRootSlash: true
       }
-      ))
+    ))
     .pipe($.inject(es.merge(
       styles,
       scripts
@@ -146,7 +146,14 @@ gulp.task('html-build', function() {
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(build + '/js/vendor'));
 
-  var scripts = gulp.src(bowerFiles(), [ source + '/js/plugins.js', source + '/js/scripts.js'])
+  var vendorjs = gulp.src(bowerFiles())
+    .pipe($.plumber(plumberConfig))
+    .pipe($.filter('**/*.js'))
+    .pipe($.uglify())
+    .pipe($.rename({suffix: '.min'}))
+    .pipe(gulp.dest(build + '/js/vendor'));
+
+  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
     .pipe($.plumber(plumberConfig))
     .pipe($.concat('scripts.js'))
     .pipe($.uglify())
@@ -174,6 +181,15 @@ gulp.task('html-build', function() {
       { ignorePath: [build, source],
         addRootSlash: true,
         starttag: '<!-- inject:modernizr -->'
+      }
+    ))
+    .pipe($.inject(es.merge(
+        vendorjs
+      ),
+      {
+        name: 'bower',
+        ignorePath: [build, source],
+        addRootSlash: true
       }
     ))
     .pipe($.inject(es.merge(
