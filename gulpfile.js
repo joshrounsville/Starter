@@ -60,11 +60,11 @@ gulp.task('styles', function () {
     .pipe($.jshint.reporter('default'));
 });
 
-gulp.task('scripts', function () {
-  return gulp.src([source + '/js/plugins.js', source + '/js/**/*'])
-    .pipe($.plumber(plumberConfig))
-    .pipe(gulp.dest(build + '/js'));
-});
+// gulp.task('scripts', function () {
+//   return gulp.src([source + '/js/plugins.js', source + '/js/**/*'])
+//     .pipe($.plumber(plumberConfig))
+//     .pipe(gulp.dest(build + '/js'));
+// });
 
 
 /* ====================================
@@ -92,7 +92,7 @@ gulp.task('html-default', function() {
     .pipe($.plumber(plumberConfig))
     .pipe(gulp.dest(build + '/js/vendor'));
 
-  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
+  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js', source + '/js/app/**/*'])
     .pipe($.plumber(plumberConfig))
     .pipe(gulp.dest(build + '/js'));
 
@@ -125,7 +125,7 @@ gulp.task('html-default', function() {
         ignorePath: [build, source],
         addRootSlash: true
       }
-    ))
+      ))
     .pipe($.inject(es.merge(
       styles,
       scripts
@@ -140,20 +140,21 @@ gulp.task('html-default', function() {
 
 gulp.task('html-build', function() {
 
+  var vendorjs = gulp.src(bowerFiles())
+    .pipe($.plumber(plumberConfig))
+    .pipe($.filter('**/*.js'))
+    .pipe($.concat('vendor.js'))
+    .pipe($.uglify())
+    .pipe($.rename({suffix: '.min'}))
+    .pipe(gulp.dest(build + '/js/vendor'));
+
   var modernizrjs = gulp.src(source + '/js/vendor/modernizr.js')
     .pipe($.plumber(plumberConfig))
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(build + '/js/vendor'));
 
-  var vendorjs = gulp.src(bowerFiles())
-    .pipe($.plumber(plumberConfig))
-    .pipe($.filter('**/*.js'))
-    .pipe($.uglify())
-    .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(build + '/js/vendor'));
-
-  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
+  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js', source + '/js/app/**/*'])
     .pipe($.plumber(plumberConfig))
     .pipe($.concat('scripts.js'))
     .pipe($.uglify())
@@ -248,8 +249,6 @@ gulp.task('watch', function() {
   gulp.watch(source + '/scss/**/*.scss', ['styles', reload]);
 
   gulp.watch(source + '/js/**/*.js', ['jshint', 'scripts', reload]);
-
-  gulp.watch(source + '/img/**/*', ['images', reload]);
 
   gulp.watch(source + '/htdocs/**/*', ['html-default', reload]);
 });
