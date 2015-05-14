@@ -18,7 +18,7 @@
 /**** import elements ****/
 @import "_elements/forms", "_elements/tables";
 @import "_elements/media", "_elements/lists", "_elements/links";
-@import "_elements/buttons", "_elements/icons", "_elements/font-awesome";
+@import "_elements/buttons", "_elements/icons", "_components/carousel";
 
 
 
@@ -27,11 +27,6 @@
 
 
 /**** import components ****/
-@import "_components/carousel";
-
-
-/**** import pages ****/
-@import "_pages/home";
 
 
 /**** import classes ****/

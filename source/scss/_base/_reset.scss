@@ -3,8 +3,8 @@
 ========================================================================== */
 
 *,
-::after,
-::before {
+:after,
+:before {
   box-sizing: border-box;
 }
 
@@ -12,9 +12,6 @@ html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   @include breakpoint(medium) {
-    -webkit-text-size-adjust: none;
-  }
-  @include breakpoint(small) {
     -webkit-text-size-adjust: none;
   }
 }
@@ -166,13 +163,13 @@ figure {
 }
 
 ::-moz-selection {
-  background: $colorText;
+  background: $colorGray;
   color: #fff;
   text-shadow: none;
 }
 
 ::selection {
-  background: $colorText;
+  background: $colorGray;
   color: #fff;
   text-shadow: none;
 }

@@ -10,9 +10,9 @@
   font-weight: 600;
   text-decoration: none;
   outline: 0;
-  background: $colorBtn;
-  color: $colorText;
-  border: 1px solid $colorBtn;
+  background: $colorGray;
+  color: #fff;
+  border: 1px solid $colorGray;
   transition: all 0.13s ease-in-out;
   &:hover,
   &:focus {

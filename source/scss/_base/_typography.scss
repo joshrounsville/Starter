@@ -9,7 +9,7 @@ html, body, button {
 body {
   @include fontRegular();
   font-size: $fontBase;
-  color: $colorText;
+  color: $colorGray;
   line-height: $lineHeight;
 }
 
