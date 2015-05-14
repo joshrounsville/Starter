@@ -223,7 +223,7 @@ gulp.task('clean', del.bind(null, [build + '/*'], {dot: true}));
  * Copy files
  * ==================================== */
 gulp.task('copyfiles', function() {
-  return gulp.src(source + '/**/*.{ttf,woff,eof,svg,ico}')
+  return gulp.src([source + '/**/*.{ttf,woff,eof,svg,ico,xml,txt}', source + '/.htaccess'])
     .pipe($.plumber(plumberConfig))
     .pipe(gulp.dest(build));
 });
