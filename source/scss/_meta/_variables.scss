@@ -36,16 +36,17 @@ $colorGrayLight: #bbb !default;
 
 /*==========  TEXT  ==========*/
 
-$fontSmall: 13px !default;
-$fontBase: 16px !default;
-$fontLarge: 20px !default;
+// size will be converted to px and rem
+$fontSmall: 13;
+$fontBase: 16;
+$fontLarge: 20;
 
-$fontH1: 40px !default;
-$fontH2: 34px !default;
-$fontH3: 28px !default;
-$fontH4: 22px !default;
-$fontH5: 16px !default;
-$fontH6: 14px !default;
+$fontH1: 40;
+$fontH2: 34;
+$fontH3: 28;
+$fontH4: 22;
+$fontH5: 16;
+$fontH6: 14;
 
 $lineHeight: 1.5 !default;
 $lineHeightHeader: 1.2 !default;
