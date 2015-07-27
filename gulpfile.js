@@ -44,7 +44,9 @@ gulp.task('serve', ['watch'], function(){
 gulp.task('styles', function () {
   return gulp.src(source + '/scss/**/components.scss')
     .pipe($.plumber(plumberConfig))
-    .pipe($.rubySass())
+    .pipe($.rubySass({
+      'sourcemap=none': true
+    }))
     .pipe($.autoprefixer((["last 2  version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
     .pipe(gulp.dest(build + '/css/'));
 });
@@ -53,7 +55,7 @@ gulp.task('styles', function () {
 /* ====================================
  * Scripts
  * ==================================== */
- gulp.task('jshint', function() {
+gulp.task('jshint', function() {
   return gulp.src(source + '/js/scripts.js')
     .pipe($.plumber(plumberConfig))
     .pipe($.jshint())
@@ -106,7 +108,9 @@ gulp.task('html-default', function() {
 
   var styles = gulp.src(source + '/scss/**/components.scss')
     .pipe($.plumber(plumberConfig))
-    .pipe($.rubySass())
+    .pipe($.rubySass({
+      'sourcemap=none': true
+    }))
     .pipe($.autoprefixer((["last 2 version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
     .pipe(gulp.dest(build + '/css/'));
 
@@ -169,7 +173,9 @@ gulp.task('html-build', function() {
 
   var styles = gulp.src(source + '/scss/**/*.scss')
     .pipe($.plumber(plumberConfig))
-    .pipe($.rubySass())
+    .pipe($.rubySass({
+      'sourcemap=none': true
+    }))
     .pipe($.concat('styles.css'))
     .pipe($.autoprefixer((["last 2 version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
     .pipe($.minifyCss())

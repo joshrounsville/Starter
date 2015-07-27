@@ -11,10 +11,19 @@ $medium: 950px !default;
 $large: 1170px !default;
 
 
+
+/*==========  GRID  ==========*/
+
+$gridCount: 12;
+$gridGutter: 30px;
+
+
+
 /*==========  SPACING  ==========*/
 
 $padding: 40px;
 $margin: 20px;
+
 
 
 /*==========  COLORS  ==========*/
@@ -24,7 +33,8 @@ $colorGrayDark: #404040 !default;
 $colorGrayLight: #bbb !default;
 
 
-/*==========  FONTS  ==========*/
+
+/*==========  TEXT  ==========*/
 
 $fontSmall: 13px !default;
 $fontBase: 16px !default;

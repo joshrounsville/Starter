@@ -9,7 +9,6 @@
   padding: $padding;
 }
 
-
 .pad-v {
   padding-top: $padding;
   padding-bottom: $padding;
@@ -23,6 +22,11 @@
 .pad-h {
   padding-right: $padding;
   padding-left: $padding;
+}
+
+.pad-h--2x {
+  padding-right: $padding*2;
+  padding-left: $padding*2;
 }
 
 
