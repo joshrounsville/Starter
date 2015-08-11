@@ -7,6 +7,12 @@
   animation-fill-mode: both;
 }
 
+@for $i from 1 through 20 {
+  .delay-#{$i} {
+    animation-delay: 0.1s + ($i*0.04);
+  }
+}
+
 
 
 /*==========  FADE IN  ==========*/

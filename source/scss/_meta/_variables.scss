@@ -48,8 +48,16 @@ $fontH4: 22;
 $fontH5: 16;
 $fontH6: 14;
 
-$lineHeight: 1.5 !default;
+$lineHeight: 1.7 !default;
 $lineHeightHeader: 1.2 !default;
+$lineHeightAlt: 1.5 !default;
 
 $fontRegular: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 $fontHighlight: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+
+
+/*==========  OTHERS  ==========*/
+
+$timing: 0.15s;
+$easing: cubic-bezier(0.455, 0.030, 0.515, 0.955);

@@ -12,7 +12,7 @@
   background: $colorGray;
   color: #fff;
   border: 1px solid $colorGray;
-  transition: all 0.13s ease-in-out;
+  transition: all $timing $easing;
   &:hover,
   &:focus {
     background: #4d4d4d;
