@@ -73,7 +73,7 @@ gulp.task('scripts', function () {
  * Images
  * ==================================== */
 gulp.task('images', function() {
-  return gulp.src([ source + '/img/**/*', '!.svg'])
+  return gulp.src([ source + '/img/**/*'])
     .pipe($.plumber(plumberConfig))
     .pipe($.imagemin({
       optimizationLevel: 3,
