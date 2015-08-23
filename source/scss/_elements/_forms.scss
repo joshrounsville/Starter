@@ -5,7 +5,6 @@
 
 form {
   margin: 0;
-  @include placeholder(#ccc);
 }
 
 textarea {
@@ -80,6 +79,11 @@ button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
+}
+
+input,
+textarea {
+  @include placeholder( $color-gray-light );
 }
 
 

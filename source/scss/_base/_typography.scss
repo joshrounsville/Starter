@@ -8,10 +8,10 @@
 // }
 
 body {
-  color: $colorGray;
-  line-height: $lineHeight;
-  @include fontRegular();
-  @include fontSize($fontBase);
+  color: $color-body-text;
+  line-height: $line-height;
+  @include font-size($font-base);
+  @include font-regular();
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -24,78 +24,39 @@ p, ul, ol {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  line-height: $lineHeightHeader;
+  line-height: $line-height-header;
   text-rendering: optimizeLegibility;
-  @include fontHighlight();
+  @include font-highlight();
 }
 
-.h1, h1 {
-  @include fontSize($fontH1);
-
-  @include breakpoint(large) {
-    @include fontSize($fontH1 - 2);
-  }
-  @include breakpoint(medium) {
-    @include fontSize($fontH1 - 4);
-  }
-  @include breakpoint(small) {
-    @include fontSize($fontH1 - 6);
-  }
+h1, .h1 {
+  @include font-size($font-h1);
 }
 
-.h2, h2 {
-  @include fontSize($fontH2);
-
-  @include breakpoint(large) {
-    @include fontSize($fontH2 - 2);
-  }
-  @include breakpoint(medium) {
-    @include fontSize($fontH2 - 4);
-  }
-  @include breakpoint(small) {
-    @include fontSize($fontH2 - 5);
-  }
+h2, .h2 {
+  @include font-size($font-h2);
 }
 
-.h3, h3 {
-  @include fontSize($fontH3);
-
-  @include breakpoint(large) {
-    @include fontSize($fontH3 - 2);
-  }
-  @include breakpoint(medium) {
-    @include fontSize($fontH3 - 3);
-  }
-  @include breakpoint(small) {
-    @include fontSize($fontH3 - 4);
-  }
+h3, .h3 {
+  @include font-size($font-h3);
 }
 
-.h4, h4 {
-  @include fontSize($fontH4);
-
-  @include breakpoint(large) {
-    @include fontSize($fontH4 - 2);
-  }
-  @include breakpoint(medium) {
-    @include fontSize($fontH4 - 3);
-  }
-  @include breakpoint(small) {
-    @include fontSize($fontH4 - 4);
-  }
+h4, .h4 {
+  @include font-size($font-h4);
 }
 
 h5, .h5 {
-  @include fontSize($fontH5);
+  @include font-size($font-h5);
 }
 
 h6, .h6 {
-  @include fontSize($fontH6);
+  @include font-size($font-h6);
 }
+
 
 .small,
 small {
-  @include fontSize($fontSmall);
+  @include font-size($font-small);
 }
 
 .strong,

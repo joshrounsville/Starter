@@ -4,12 +4,12 @@
 
 
 a {
-  color: $colorGray;
+  color: $color-link;
   text-decoration: none;
   transition: all $timing $easing;
   &:hover,
   &:focus {
-    color: darken($colorGray, 15%);
+    color: $color-link-hover;
   }
 }
 

@@ -3,20 +3,23 @@
 ========================================================================== */
 
 
-/*==========  BREAKPOINTS  ==========*/
+/*==========  SETUP BREAKPOINTS  ==========*/
 
 @mixin breakpoint($point) {
-  @if $point == xSmall {
-    @media ( max-width: $xSmall )  { @content; }
+  @if $point == x-small {
+    @media ( min-width: $x-small )  { @content; }
   }
   @else if $point == small {
-    @media ( max-width: $small + 20 )  { @content; }
+    @media ( min-width: $small )  { @content; }
   }
   @else if $point == medium {
-    @media ( max-width: $medium + 20 ) { @content; }
+    @media ( min-width: $medium ) { @content; }
   }
   @else if $point == large {
-    @media ( max-width: $large + 20 ) { @content; }
+    @media ( min-width: $large ) { @content; }
+  }
+  @else if $point == x-large {
+    @media ( min-width: $x-large ) { @content; }
   }
 }
 
@@ -24,21 +27,21 @@
 
 /*==========  FONTS  ==========*/
 
-@mixin fontRegular() {
-  font-family: $fontRegular;
+@mixin font-regular() {
+  font-family: $font-regular;
   font-style: normal;
   font-weight: normal;
 }
 
 
-@mixin fontHighlight() {
-  font-family: $fontHighlight;
+@mixin font-highlight() {
+  font-family: $font-highlight;
   font-style: normal;
   font-weight: normal;
 }
 
 
-@mixin fontFace($font-name, $file-name, $weight: normal, $style: normal) {
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
   @font-face {
     font-family: quote($font-name);
     src: url($file-name + '.eot');
@@ -51,9 +54,9 @@
   }
 }
 
-@mixin fontSize($sizeValue: 1.6) {
-  font-size: ($sizeValue * 1) + px;
-  font-size: ($sizeValue / 10) + rem;
+@mixin font-size($size-value: 1.6) {
+  font-size: ($size-value * 1) + px;
+  font-size: ($size-value / 10) + rem;
 }
 
 
@@ -67,7 +70,7 @@
 }
 
 
-@mixin vAlign() {
+@mixin v-align() {
   position: relative;
   top: 50%;
   transform: translateY(-50%);

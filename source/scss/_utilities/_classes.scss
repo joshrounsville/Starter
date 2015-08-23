@@ -13,11 +13,11 @@
   float: right;
 }
 
-.order-1 {
+.order--1 {
   order: 1;
 }
 
-.order-2 {
+.order--2 {
   order: 2;
 }
 
@@ -25,15 +25,15 @@
 
 /*==========  TEXT  ==========*/
 
-.text-center {
+.text--center {
   text-align: center;
 }
 
-.text-left {
+.text--left {
   text-align: left;
 }
 
-.text-right {
+.text--right {
   text-align: right;
 }
 
@@ -41,19 +41,19 @@
 
 /*==========  BACKGROUND  ==========*/
 
-.bg-white {
+.bg--white {
   background-color: #fff;
 }
 
-.bg-gray {
-  background-color: $colorGrayLight;
+.bg--gray {
+  background-color: $color-gray;
 }
 
 
 
 /*==========  BORDER  ==========*/
 
-.inline-border {
+.border--inline {
   position: relative;
   text-align: center;
   &:after {
@@ -78,20 +78,25 @@
 
 /*==========  ALIGNMENT  ==========*/
 
-.flex-v-align {
-  align-items: center;
+.flex--v-align {
+  align-self: center;
 }
 
-.flex-t-align {
-  align-items: flex-start;
+.flex--t-align {
+  align-self: flex-start;
 }
 
-.flex-b-align {
-  align-items: flex-end;
+.flex--b-align {
+  align-self: flex-end;
 }
 
-.v-align {
-  @include vAlign();
+.align--vert {
+  @include v-align();
+}
+
+.align--horz {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 
@@ -103,35 +108,13 @@
   visibility: hidden;
 }
 
-.tablet-hide {
-  @include breakpoint(medium) {
-    display: none;
-    visibility: hidden;
-  }
-}
-
-.mobile-hide {
-  @include breakpoint(small) {
-    display: none;
-    visibility: hidden;
-  }
-}
-
 
 
 /*==========  UTILITIES  ==========*/
 
 .break {
-  display: block;
-
-  @include breakpoint(large) {
-    display: inline;
-  }
-  @include breakpoint(medium) {
-    display: inline;
-  }
-  @include breakpoint(small) {
-    display: inline;
+  @include breakpoint(x-large) {
+    display: block;
   }
 }
 

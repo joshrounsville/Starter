@@ -3,19 +3,26 @@
 ========================================================================== */
 
 
+/*==========  ARE WE USING FLEXBOX?  ==========*/
+
+$enable-flex: true;
+
+
+
 /*==========  DEFINE BREAKPOINTS  ==========*/
 
-$xSmall: 555px !default;
-$small: 740px !default;
-$medium: 950px !default;
-$large: 1170px !default;
+$x-small: 1px !default;
+$small: 500px !default;
+$medium: 760px !default;
+$large: 1020px !default;
+$x-large: 1300px !default;
 
 
 
 /*==========  GRID  ==========*/
 
-$gridCount: 12;
-$gridGutter: 30px;
+$grid-columns: 12;
+$grid-gutter-width: 30px;
 
 
 
@@ -28,32 +35,41 @@ $margin: 20px;
 
 /*==========  COLORS  ==========*/
 
-$colorGray: #737373 !default;
-$colorGrayDark: #404040 !default;
-$colorGrayLight: #bbb !default;
+$color-brand: #da2f10;
+$color-brand-secondary: #da2f10;
+
+$color-gray: #737373;
+$color-gray-dark: #404040;
+$color-gray-light: #bbb;
+
+$color-body-bg: #fff;
+$color-body-text: $color-gray-dark;
+
+$color-link: $color-brand;
+$color-link-hover: darken( $color-brand, 10% );
 
 
 
 /*==========  TEXT  ==========*/
 
 // size will be converted to px and rem
-$fontSmall: 13;
-$fontBase: 16;
-$fontLarge: 20;
+$font-small: 13;
+$font-base: 16;
+$font-large: 20;
 
-$fontH1: 40;
-$fontH2: 34;
-$fontH3: 28;
-$fontH4: 22;
-$fontH5: 16;
-$fontH6: 14;
+$font-h1: 40;
+$font-h2: 34;
+$font-h3: 28;
+$font-h4: 22;
+$font-h5: 16;
+$font-h6: 14;
 
-$lineHeight: 1.7 !default;
-$lineHeightHeader: 1.2 !default;
-$lineHeightAlt: 1.5 !default;
+$line-height: 1.7 !default;
+$line-height-header: 1.2 !default;
+$line-height-alt: 1.5 !default;
 
-$fontRegular: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-$fontHighlight: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-regular: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-highlight: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
 
 
