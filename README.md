@@ -1,4 +1,4 @@
-# Starter Files V 3.0.0
+# Starter Files V 3.1.0
 Based on Nathan Searles [Day One Gulp Starter Kit](https://github.com/nathansearles/Day-One-Gulp-Starter-Kit)
 
 ## Installing
