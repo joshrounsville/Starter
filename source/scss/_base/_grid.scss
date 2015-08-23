@@ -131,7 +131,11 @@
 
   @for $i from 1 through $grid-columns {
     .span-l-#{$i} {
-      width: (100%/$grid-columns) * $i;
+      @if $enable-flex {
+        flex: 0 0 (100%/$grid-columns) * $i;
+      } @else {
+        width: (100%/$grid-columns) * $i;
+      }
     }
     .offset-l-#{$i} {
       margin-left: (100%/$grid-columns) * $i;
@@ -163,10 +167,14 @@
   }
 
   @for $i from 1 through $grid-columns {
-    .span-l-#{$i} {
-      width: (100%/$grid-columns) * $i;
+    .span-xl-#{$i} {
+      @if $enable-flex {
+        flex: 0 0 (100%/$grid-columns) * $i;
+      } @else {
+        width: (100%/$grid-columns) * $i;
+      }
     }
-    .offset-l-#{$i} {
+    .offset-xl-#{$i} {
       margin-left: (100%/$grid-columns) * $i;
     }
   }
