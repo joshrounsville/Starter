@@ -161,6 +161,7 @@ gulp.task('html-build', function() {
   var vendorjs = gulp.src(bowerFiles())
     .pipe($.plumber(plumberConfig))
     .pipe($.filter('**/*.js'))
+    .pipe($.concat('bower-scripts.js'))
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(build + '/js/vendor'));
@@ -229,7 +230,7 @@ gulp.task('clean', del.bind(null, [build + '/*'], {dot: true}));
  * Copy files
  * ==================================== */
 gulp.task('copyfiles', function() {
-  return gulp.src([source + '/**/*.{ttf,woff,eof,svg,ico,xml,txt}', source + '/.htaccess'])
+  return gulp.src([source + '/**/*.{ttf,woff,woff2,eof,svg,ico,xml,txt}', source + '/.htaccess'])
     .pipe($.plumber(plumberConfig))
     .pipe(gulp.dest(build));
 });
