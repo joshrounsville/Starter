@@ -73,7 +73,7 @@ gulp.task('scripts', function () {
 gulp.task('images', function() {
   return gulp.src([ source + '/img/**/*'])
     .pipe($.plumber(plumberConfig))
-    .pipe($.imagemin({
+    .pipe($.cache($.imagemin({
       optimizationLevel: 3,
       progressive: true,
       interlaced: true,
@@ -81,7 +81,7 @@ gulp.task('images', function() {
         { removeViewBox: false },
         { removeUselessStrokeAndFill: false }
       ],
-    }))
+    })))
     .pipe(gulp.dest(build + '/img'));
 });
 

@@ -46,6 +46,7 @@
     font-family: quote($font-name);
     src: url($file-name + '.eot');
     src: url($file-name + '.eot?#iefix')  format('embedded-opentype'),
+    url($file-name + '.woff2') format('woff2'),
     url($file-name + '.woff') format('woff'),
     url($file-name + '.ttf')  format('truetype'),
     url($file-name + '.svg##{$font-name}')  format('svg');
@@ -53,6 +54,7 @@
     font-style: $style;
   }
 }
+
 
 @mixin font-size($size-value: 1.6) {
   font-size: ($size-value * 1) + px;
