@@ -4,10 +4,10 @@
 
 
 html {
-  font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-text-size-adjust: none;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 *, *:before, *:after {
@@ -92,15 +92,6 @@ pre {
   word-wrap: break-word;
 }
 
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, serif;
-  _font-family: 'courier new', monospace;
-  @include font-size($font-base);
-}
-
 q {
   quotes: none;
   &:before,
@@ -108,14 +99,6 @@ q {
     content: '';
     content: none;
   }
-}
-
-sub,
-sup {
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-  @include font-size($font-small);
 }
 
 sup {
@@ -160,13 +143,13 @@ figure {
 }
 
 ::-moz-selection {
-  background: $color-body-text;
+  background: $color-brand;
   color: #fff;
   text-shadow: none;
 }
 
 ::selection {
-  background: $color-body-text;
+  background: $color-brand;
   color: #fff;
   text-shadow: none;
 }

@@ -53,9 +53,12 @@ $color-link-hover: darken( $color-brand, 10% );
 /*==========  TEXT  ==========*/
 
 // size will be converted to px and rem
-$font-small: 13;
 $font-base: 16;
+
+$font-small: 11;
+$font-medium: 14;
 $font-large: 20;
+$font-huge: 50;
 
 $font-h1: 40;
 $font-h2: 34;

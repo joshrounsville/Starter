@@ -13,12 +13,14 @@
   padding-left: 10px;
   margin-right: auto;
   margin-left: auto;
+  display: block;
   @include clearfix();
 }
 
 .row {
   margin-right: -10px;
   margin-left: -10px;
+  display: block;
   @include clearfix();
 }
 
@@ -78,6 +80,11 @@
 @include breakpoint(medium) {
 
   .container {
+    @if $enable-flex {
+      display: flex;
+      flex-direction: column;
+    }
+
     width: $medium;
   }
 
@@ -97,12 +104,11 @@
 
   [class*="span"] {
     @if $enable-flex {
-      // do nothin
+      display: flex;
+      flex-direction: column;
     } @else {
       float: left;
     }
-
-    padding-bottom: inherit;
   }
 
   @for $i from 1 through $grid-columns {

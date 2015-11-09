@@ -56,9 +56,9 @@
 }
 
 
-@mixin font-size($size-value: 1.6) {
+@mixin font-size($size-value: $font-base) {
   font-size: ($size-value * 1) + px;
-  font-size: ($size-value / 10) + rem;
+  font-size: ($size-value / $font-base) + rem;
 }
 
 

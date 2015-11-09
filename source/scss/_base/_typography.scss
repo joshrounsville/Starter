@@ -7,11 +7,16 @@
 //   -webkit-font-smoothing: antialiased;
 // }
 
-body {
+html {
+  background: #fff;
   color: $color-body-text;
   line-height: $line-height;
-  @include font-size($font-base);
+  font-size: $font-base + px;
   @include font-regular();
+}
+
+body {
+  //overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -62,4 +67,30 @@ small {
 .strong,
 strong {
   font-weight: bold;
+}
+
+.text--highlight {
+  @include font-size($font-large);
+}
+
+.text--huge {
+  line-height: $line-height-header;
+  @include font-size($font-huge);
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace;
+  @include font-size($font-base);
+}
+
+sub,
+sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  @include font-size($font-small);
 }

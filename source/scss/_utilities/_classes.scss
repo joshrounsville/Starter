@@ -78,16 +78,28 @@
 
 /*==========  ALIGNMENT  ==========*/
 
-.flex--v-align {
+.flex--v-align-s {
   align-self: center;
 }
 
-.flex--t-align {
+.flex--v-align-i {
+  align-items: center;
+}
+
+.flex--t-align-s {
   align-self: flex-start;
 }
 
-.flex--b-align {
+.flex--t-align-i {
+  align-items: flex-start;
+}
+
+.flex--b-align-s {
   align-self: flex-end;
+}
+
+.flex--b-align-i {
+  align-items: flex-end;
 }
 
 .align--vert {
