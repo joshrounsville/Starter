@@ -1,191 +1,206 @@
-/* ==========================================================================
-  Grid - Based on the Twitter Bootstrap
-========================================================================== */
+// /* ==========================================================================
+//   Grid - Based on the Twitter Bootstrap
+// ========================================================================== */
 
-
-.full-width {
-  position: relative;
-  width: 100%;
-}
 
 .container {
-  padding-right: 10px;
-  padding-left: 10px;
+  width: 100%;
+  max-width: 1180px;
+  display: flex;
   margin-right: auto;
   margin-left: auto;
-  display: block;
-  @include clearfix();
 }
 
-.row {
-  margin-right: -10px;
-  margin-left: -10px;
-  display: block;
-  @include clearfix();
-}
-
-[class*="span"] {
-  display: block;
+.col {
   position: relative;
-  min-height: 1px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  width: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
+// .full-width {
+//   position: relative;
+//   width: 100%;
+// }
 
-/*==========  EXTRA SMALL SCREEN  ==========*/
+// .container {
+//   padding-right: 10px;
+//   padding-left: 10px;
+//   margin-right: auto;
+//   margin-left: auto;
+//   display: block;
+//   @include clearfix();
+// }
 
-@include breakpoint(x-small) {
+// .row {
+//   margin-right: -10px;
+//   margin-left: -10px;
+//   display: block;
+//   @include clearfix();
+// }
 
-  [class*="span-xs"] {
-    float: left;
-  }
-
-  @for $i from 1 through $grid-columns {
-    .span-xs-#{$i} {
-      width: (100%/$grid-columns) * $i;
-    }
-    .offset-xs-#{$i} {
-      margin-left: (100%/$grid-columns) * $i;
-    }
-  }
-
-}
-
-
-/*==========  SMALL SCREEN  ==========*/
-
-@include breakpoint(small) {
-
-  [class*="span-s"] {
-    float: left;
-  }
-
-  @for $i from 1 through $grid-columns {
-    .span-s-#{$i} {
-      width: (100%/$grid-columns) * $i;
-    }
-    .offset-s-#{$i} {
-      margin-left: (100%/$grid-columns) * $i;
-    }
-  }
-
-}
+// [class*="span"] {
+//   display: block;
+//   position: relative;
+//   min-height: 1px;
+//   padding-right: 10px;
+//   padding-bottom: 10px;
+//   padding-left: 10px;
+//   width: auto;
+// }
 
 
-/*==========  MEDIUM SCREEN  ==========*/
+// /*==========  EXTRA SMALL SCREEN  ==========*/
 
-@include breakpoint(medium) {
+// @include breakpoint(x-small) {
 
-  .container {
-    @if $enable-flex {
-      display: flex;
-      flex-direction: column;
-    }
+//   [class*="span-xs"] {
+//     float: left;
+//   }
 
-    width: $medium;
-  }
+//   @for $i from 1 through $grid-columns {
+//     .span-xs-#{$i} {
+//       width: (100%/$grid-columns) * $i;
+//     }
+//     .offset-xs-#{$i} {
+//       margin-left: (100%/$grid-columns) * $i;
+//     }
+//   }
 
-  @if $enable-flex {
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-
-      &:before,
-      &:after {
-        clear: none;
-        display: block;
-      }
-    }
-  }
+// }
 
 
-  [class*="span"] {
-    @if $enable-flex {
-      display: flex;
-      flex-direction: column;
-    } @else {
-      float: left;
-    }
-  }
+// /*==========  SMALL SCREEN  ==========*/
 
-  @for $i from 1 through $grid-columns {
-    .span-#{$i} {
-      @if $enable-flex {
-        flex: 0 0 (100%/$grid-columns) * $i;
-      } @else {
-        width: (100%/$grid-columns) * $i;
-      }
-    }
-    .offset-#{$i} {
-      margin-left: (100%/$grid-columns) * $i;
-    }
-  }
+// @include breakpoint(small) {
 
-}
+//   [class*="span-s"] {
+//     float: left;
+//   }
+
+//   @for $i from 1 through $grid-columns {
+//     .span-s-#{$i} {
+//       width: (100%/$grid-columns) * $i;
+//     }
+//     .offset-s-#{$i} {
+//       margin-left: (100%/$grid-columns) * $i;
+//     }
+//   }
+
+// }
 
 
-/*==========  LARGE SCREEN  ==========*/
+// /*==========  MEDIUM SCREEN  ==========*/
 
-@include breakpoint(large) {
+// @include breakpoint(medium) {
 
-  .container {
-    width: $large;
-  }
+//   .container {
+//     @if $enable-flex {
+//       display: flex;
+//       flex-direction: column;
+//     }
 
-  @for $i from 1 through $grid-columns {
-    .span-l-#{$i} {
-      @if $enable-flex {
-        flex: 0 0 (100%/$grid-columns) * $i;
-      } @else {
-        width: (100%/$grid-columns) * $i;
-      }
-    }
-    .offset-l-#{$i} {
-      margin-left: (100%/$grid-columns) * $i;
-    }
-  }
+//     width: $medium;
+//   }
 
-}
+//   @if $enable-flex {
+//     .row {
+//       display: flex;
+//       flex-wrap: wrap;
+
+//       &:before,
+//       &:after {
+//         clear: none;
+//         display: block;
+//       }
+//     }
+//   }
+
+
+//   [class*="span"] {
+//     @if $enable-flex {
+//       display: flex;
+//       flex-direction: column;
+//     } @else {
+//       float: left;
+//     }
+//   }
+
+//   @for $i from 1 through $grid-columns {
+//     .span-#{$i} {
+//       @if $enable-flex {
+//         flex: 0 0 (100%/$grid-columns) * $i;
+//       } @else {
+//         width: (100%/$grid-columns) * $i;
+//       }
+//     }
+//     .offset-#{$i} {
+//       margin-left: (100%/$grid-columns) * $i;
+//     }
+//   }
+
+// }
+
+
+// /*==========  LARGE SCREEN  ==========*/
+
+// @include breakpoint(large) {
+
+//   .container {
+//     width: $large;
+//   }
+
+//   @for $i from 1 through $grid-columns {
+//     .span-l-#{$i} {
+//       @if $enable-flex {
+//         flex: 0 0 (100%/$grid-columns) * $i;
+//       } @else {
+//         width: (100%/$grid-columns) * $i;
+//       }
+//     }
+//     .offset-l-#{$i} {
+//       margin-left: (100%/$grid-columns) * $i;
+//     }
+//   }
+
+// }
 
 
 
-/*==========  EXTRA LARGE SCREEN  ==========*/
+// /*==========  EXTRA LARGE SCREEN  ==========*/
 
-@include breakpoint(x-large) {
+// @include breakpoint(x-large) {
 
-  .container {
-    width: $x-large;
-    padding-right: $grid-gutter-width/2;
-    padding-left: $grid-gutter-width/2;
-  }
+//   .container {
+//     width: $x-large;
+//     padding-right: $grid-gutter-width/2;
+//     padding-left: $grid-gutter-width/2;
+//   }
 
-  .row {
-    margin-right: -$grid-gutter-width/2;
-    margin-left: -$grid-gutter-width/2;
-  }
+//   .row {
+//     margin-right: -$grid-gutter-width/2;
+//     margin-left: -$grid-gutter-width/2;
+//   }
 
-  [class*="span"] {
-    padding-right: $grid-gutter-width/2;
-    padding-left: $grid-gutter-width/2;
-  }
+//   [class*="span"] {
+//     padding-right: $grid-gutter-width/2;
+//     padding-left: $grid-gutter-width/2;
+//   }
 
-  @for $i from 1 through $grid-columns {
-    .span-xl-#{$i} {
-      @if $enable-flex {
-        flex: 0 0 (100%/$grid-columns) * $i;
-      } @else {
-        width: (100%/$grid-columns) * $i;
-      }
-    }
-    .offset-xl-#{$i} {
-      margin-left: (100%/$grid-columns) * $i;
-    }
-  }
+//   @for $i from 1 through $grid-columns {
+//     .span-xl-#{$i} {
+//       @if $enable-flex {
+//         flex: 0 0 (100%/$grid-columns) * $i;
+//       } @else {
+//         width: (100%/$grid-columns) * $i;
+//       }
+//     }
+//     .offset-xl-#{$i} {
+//       margin-left: (100%/$grid-columns) * $i;
+//     }
+//   }
 
-}
+// }
 
 
 

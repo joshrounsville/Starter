@@ -1,3 +1,35 @@
 /* ==========================================================================
   Footer
 ========================================================================== */
+
+
+footer {
+  border-top: 2px solid $color-gray-dark;
+  padding: 20px 0;
+  @include font-size( $font-medium );
+}
+
+.nav--footer {
+  ul {
+    display: flex;
+  }
+  li {
+    margin: 0 15px 0 0;
+  }
+  a {
+    color: $color-gray-dark;
+    border-bottom: 2px solid transparent;
+    &:hover {
+      border-color: $color-brand;
+    }
+  }
+}
+
+.nav--social-footer {
+  ul {
+    display: flex;
+  }
+  li {
+    margin: 0 0 0 10px;
+  }
+}

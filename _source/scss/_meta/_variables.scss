@@ -28,25 +28,28 @@ $grid-gutter-width: 30px;
 
 /*==========  SPACING  ==========*/
 
-$padding: 30px;
+$padding: 20px;
 $margin: 20px;
 
 
 
 /*==========  COLORS  ==========*/
 
-$color-brand: #da2f10;
+$color-brand: #a6000e;
 $color-brand-secondary: #da2f10;
 
 $color-gray: #737373;
-$color-gray-dark: #404040;
-$color-gray-light: #bbb;
+$color-gray-dark: #131313;
+$color-gray-light: #f8f8f8;
+
+$color-yellow: #FFFC19;
+$color-blue: #1485CC;
 
 $color-body-bg: #fff;
 $color-body-text: $color-gray-dark;
 
 $color-link: $color-brand;
-$color-link-hover: darken( $color-brand, 10% );
+$color-link-hover: $color-gray-dark;
 
 
 
@@ -71,8 +74,7 @@ $line-height: 1.7 !default;
 $line-height-header: 1.2 !default;
 $line-height-alt: 1.5 !default;
 
-$font-regular: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-$font-highlight: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-os: "Open Sans", sans-serif;
 
 
 

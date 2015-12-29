@@ -12,6 +12,22 @@
   display: block;
   width: 100%;
   height: 100%;
-  fill: $color-gray-light;
+  fill: $color-gray-dark;
   transition: all $timing $easing;
+}
+
+
+.icon--instagram {
+  width: 20px;
+  height: 20px;
+}
+
+.icon--facebook {
+  width: 21px;
+  height: 20px;
+}
+
+.icon--twitter {
+  width: 24px;
+  height: 20px;
 }

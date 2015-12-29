@@ -86,5 +86,82 @@ textarea {
   @include placeholder( $color-gray-light );
 }
 
+.form--styled {
+  label {
+    display: block;
+    margin: 0 0 20px;
+  }
+  .title {
+    display: block;
+    padding: 0 0 3px;
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 70%;
+    @include font-size( $font-medium );
+    border: 1px solid $color-gray-dark;
+    border-radius: 0;
+    padding: 12px 10px;
+    transition: border $timing $easing;
+    background: #fff;
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      border-color: lighten( $color-gray-dark, 50% );
+    }
+  }
+
+  button {
+    margin-top: 15px;
+    @include font-size( $font-base );
+  }
+}
+
+.select--wrap {
+  position: relative;
+  height: 43px;
+  overflow: hidden;
+  padding-right: 18px;
+  background: transparent;
+  width: 70%;
+  display: block;
+  border: 1px solid $color-gray-dark;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 9px solid $color-gray-dark;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -3px;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+
+.select--styled {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-left: 10px;
+  width: 100%;
+  @include font-size( $font-medium );
+}
 
 

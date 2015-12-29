@@ -1,3 +1,112 @@
 /* ==========================================================================
   Header
 ========================================================================== */
+
+
+header {
+  padding: 15px 20px;
+  background: #fff;
+}
+
+.logo--main {
+  display: block;
+  width: 110px;
+  margin: 0 40px 0 0;
+}
+
+.nav--main {
+  background: $color-blue;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  z-index: 2;
+  padding: 95px 20px 20px;
+  min-width: 170px;
+  transform: translateX(100%);
+  transition: transform $timing $easing;
+
+  .mobile-nav-show & {
+    transform: translateX(0);
+  }
+
+  li {
+    display: block;
+    margin: 0 0 10px;
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  @include breakpoint(large) {
+    position: relative;
+    overflow: hidden;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    padding: 0;
+    transform: none;
+    width: 100%;
+    background: transparent;
+    ul {
+      display: flex;
+      align-items: center;
+    }
+    li {
+      margin: 0 30px 0 0;
+    }
+  }
+}
+
+
+.link--nav {
+  text-transform: uppercase;
+  color: $color-gray-dark;
+  padding: 0 0 1px;
+  border-bottom: 2px solid transparent;
+  @include font-medium();
+  &:hover {
+    border-color: $color-brand;
+    color: $color-gray-dark;
+  }
+}
+
+
+$pages: menu locations contact catering;
+
+@each $page in $pages {
+
+  .page--#{$page} {
+    .link--nav-#{$page} {
+      border-color: $color-brand;
+    }
+  }
+
+}
+
+
+.nav--social {
+  ul {
+    display: flex;
+  }
+  li {
+    margin: 0 0 0 15px;
+  }
+}
+
+.link--social {
+  display: block;
+
+  .icon {
+    display: block;
+  }
+
+  &:hover {
+    .icon-svg {
+      fill: $color-blue;
+    }
+  }
+}
+
+

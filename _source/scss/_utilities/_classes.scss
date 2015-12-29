@@ -37,6 +37,10 @@
   text-align: right;
 }
 
+.text--brand {
+  color: $color-brand;
+}
+
 
 
 /*==========  BACKGROUND  ==========*/
@@ -74,6 +78,9 @@
   }
 }
 
+.border--bottom {
+  border-bottom: 2px solid $color-gray-dark;
+}
 
 
 /*==========  ALIGNMENT  ==========*/
@@ -100,6 +107,14 @@
 
 .flex--b-align-i {
   align-items: flex-end;
+}
+
+.flex--justify-space {
+  justify-content: space-between;
+}
+
+.flex--justify-center {
+  justify-content: center;
 }
 
 .align--vert {

@@ -31,11 +31,65 @@
     <!-- inject:css -->
     <!-- endinject -->
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,400italic">
+
     <!-- inject:modernizr -->
     <!-- endinject -->
 
   </head>
 
-  <body>
+  <body class="@@bodyClass">
 
   @@include('htdocs/_templates/_svg-icons.html')
+
+  <header>
+    <div class="container flex--v-align-i">
+
+      <a href="/" class="logo logo--main">
+        <img src="/img/logos/rip-city-grill.jpg" alt="Rip City Grill">
+      </a>
+
+      <nav class="nav--main">
+        <ul>
+          <li><a href="/menu/" class="link--nav link--nav-menu">Menu</a></li>
+          <li><a href="/locations/" class="link--nav link--nav-locations">Locations</a></li>
+          <li><a href="/menu/" class="link--nav link--nav-contact">Contact</a></li>
+          <li><a href="/catering/" class="link--nav link--nav-catering">Catering</a></li>
+        </ul>
+      </nav>
+
+      <nav class="nav--social">
+        <ul>
+          <li>
+            <a href="#" target="_blank" class="link--social">
+              <span class="icon icon--instagram">
+                <svg class="icon-svg">
+                  <use xlink:href="#icon-instagram" />
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank" class="link--social">
+              <span class="icon icon--facebook">
+                <svg class="icon-svg">
+                  <use xlink:href="#icon-facebook" />
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank" class="link--social">
+              <span class="icon icon--twitter">
+                <svg class="icon-svg">
+                  <use xlink:href="#icon-twitter" />
+                </svg>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+
+    </div>
+  </header>

@@ -17,6 +17,10 @@ html {
 
 body {
   //overflow-x: hidden;
+  &.mobile-nav-show {
+    overflow: hidden;
+    height: 100vh;
+  }
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -31,7 +35,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   line-height: $line-height-header;
   text-rendering: optimizeLegibility;
-  @include font-highlight();
+  @include font-bold();
 }
 
 h1, .h1 {
@@ -66,7 +70,7 @@ small {
 
 .strong,
 strong {
-  font-weight: bold;
+  @include font-bold();
 }
 
 .text--highlight {

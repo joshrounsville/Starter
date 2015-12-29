@@ -13,3 +13,11 @@ a {
   }
 }
 
+.link--border {
+  color: $color-gray-dark;
+  border-bottom: 2px solid $color-blue;
+
+  &:hover {
+    border-color: $color-gray-dark;
+  }
+}
