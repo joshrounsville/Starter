@@ -210,8 +210,17 @@ gulp.task('html-build', function() {
         addRootSlash: true
       }
     ))
+    .pipe($.htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(build));
   });
+
+
+/* ====================================
+ * Clear the image cache
+ * ==================================== */
+gulp.task('clear', function (done) {
+  return $.cache.clearAll(done);
+});
 
 
 /* ====================================
