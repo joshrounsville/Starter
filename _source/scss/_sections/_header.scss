@@ -4,14 +4,55 @@
 
 
 header {
-  padding: 15px 20px;
+  padding: 10px 0;
   background: #fff;
+  .container {
+    justify-content: space-between;
+  }
+
+  .mobile-nav-show & {
+    &:after {
+      content: "";
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 10;
+      animation: fadeIn $timing both;
+    }
+  }
+
+  @include breakpoint(medium) {
+    padding: 15px 0;
+
+    .mobile-nav-show & {
+      &:after {
+        display: none;
+      }
+    }
+  }
 }
 
 .logo--main {
   display: block;
-  width: 110px;
-  margin: 0 40px 0 0;
+  width: 70px;
+
+  img {
+    width: 70px;
+    height: auto;
+  }
+
+  @include breakpoint(medium) {
+    width: 110px;
+    margin: 0 40px 0 0;
+
+    img {
+      width: 110px;
+    }
+  }
 }
 
 .nav--main {
@@ -21,9 +62,11 @@ header {
   right: 0;
   bottom: 0;
   overflow-y: scroll;
-  z-index: 2;
-  padding: 95px 20px 20px;
+  -webkit-overflow-scrolling: touch;
+  z-index: 20;
+  padding: 65px 20px 20px;
   min-width: 170px;
+  @include font-size( $font-large );
   transform: translateX(100%);
   transition: transform $timing $easing;
 
@@ -33,12 +76,22 @@ header {
 
   li {
     display: block;
-    margin: 0 0 10px;
+    margin: 0 0 15px;
     &:last-of-type {
       margin: 0;
     }
   }
 
+  .item--social {
+    margin: 10px 5px 0 0;
+    display: inline-block;
+  }
+
+  @include breakpoint(medium) {
+    .item--social {
+      display: none;
+    }
+  }
   @include breakpoint(large) {
     position: relative;
     overflow: hidden;
@@ -59,16 +112,22 @@ header {
   }
 }
 
-
 .link--nav {
   text-transform: uppercase;
-  color: $color-gray-dark;
+  color: $color-gray-light;
   padding: 0 0 1px;
   border-bottom: 2px solid transparent;
-  @include font-medium();
+  @include font-bold();
   &:hover {
     border-color: $color-brand;
+    color: $color-gray-light;
+  }
+
+  @include breakpoint(medium) {
     color: $color-gray-dark;
+    &:hover {
+      color: $color-gray-dark;
+    }
   }
 }
 
@@ -87,25 +146,79 @@ $pages: menu locations contact catering;
 
 
 .nav--social {
+  display: none;
   ul {
     display: flex;
   }
   li {
     margin: 0 0 0 15px;
   }
+
+  @include breakpoint(medium) {
+    display: block;
+  }
 }
 
 .link--social {
   display: block;
+  &:hover {
+    .icon-svg {
+      fill: $color-gray-dark;
+    }
+  }
 
   .icon {
     display: block;
   }
+  .icon-svg {
+    fill: $color-gray-light;
+  }
 
-  &:hover {
-    .icon-svg {
-      fill: $color-blue;
+  @include breakpoint(medium) {
+    &:hover {
+      .icon-svg {
+        fill: $color-blue;
+      }
     }
+    .icon-svg {
+      fill: $color-gray-dark;
+    }
+  }
+}
+
+
+.mobile-nav-toggle {
+  display: block;
+  width: 30px;
+  z-index: 20;
+  position: relative;
+
+  .bar {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: $color-gray-dark;
+    margin: 0 0 4px;
+    transition: all $timing $easing;
+    transform-origin: 12%;
+  }
+
+  .mobile-nav-show & {
+    .bar--1 {
+      transform: rotate(45deg);
+      background: $color-gray-light;
+    }
+    .bar--2 {
+      opacity: 0;
+    }
+    .bar--3 {
+      transform: rotate(-45deg);
+      background: $color-gray-light;
+    }
+  }
+
+  @include breakpoint(medium) {
+    display: none;
   }
 }
 

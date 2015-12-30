@@ -4,8 +4,9 @@
 
 
 footer {
+  background: $color-gray-dark;
   border-top: 2px solid $color-gray-dark;
-  padding: 20px 0;
+  padding: $padding 0 $padding*2;
   @include font-size( $font-medium );
 }
 
@@ -14,22 +15,44 @@ footer {
     display: flex;
   }
   li {
-    margin: 0 15px 0 0;
+    margin: 0 20px 0 0;
+    &:last-of-type {
+      margin: 0;
+    }
   }
   a {
-    color: $color-gray-dark;
+    color: $color-gray-light;
     border-bottom: 2px solid transparent;
     &:hover {
       border-color: $color-brand;
     }
   }
+
+  @include breakpoint(medium) {
+    li {
+      margin: 0 15px 0 0;
+    }
+  }
 }
 
 .nav--social-footer {
+  width: 100%;
+  padding: 15px 0 0 0;
   ul {
     display: flex;
   }
   li {
     margin: 0 0 0 10px;
+    &:first-of-type {
+      margin: 0;
+    }
+  }
+  .icon-svg {
+    fill: $color-gray-light;
+  }
+
+  @include breakpoint(medium) {
+    width: auto;
+    padding: 0;
   }
 }

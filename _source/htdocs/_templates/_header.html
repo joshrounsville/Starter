@@ -11,7 +11,7 @@
 
     <meta name="description" content="@@description">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
     <link rel="icon" type="image/png" href="/img/touch/favicon.png">
 
@@ -31,7 +31,7 @@
     <!-- inject:css -->
     <!-- endinject -->
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,400italic">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
 
     <!-- inject:modernizr -->
     <!-- endinject -->
@@ -46,22 +46,40 @@
     <div class="container flex--v-align-i">
 
       <a href="/" class="logo logo--main">
-        <img src="/img/logos/rip-city-grill.jpg" alt="Rip City Grill">
+        <img src="/img/logos/rip-city-grill.jpg" alt="Rip City Grill" width="90" height="58">
       </a>
 
       <nav class="nav--main">
         <ul>
           <li><a href="/menu/" class="link--nav link--nav-menu">Menu</a></li>
           <li><a href="/locations/" class="link--nav link--nav-locations">Locations</a></li>
-          <li><a href="/menu/" class="link--nav link--nav-contact">Contact</a></li>
+          <li><a href="/contact/" class="link--nav link--nav-contact">Contact</a></li>
           <li><a href="/catering/" class="link--nav link--nav-catering">Catering</a></li>
+          <li class="item--social">
+            <a href="https://www.instagram.com/ripcitygrill/" target="_blank" class="link--social">
+              <span class="icon icon--instagram">
+                <svg class="icon-svg">
+                  <use xlink:href="#icon-instagram" />
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li class="item--social">
+            <a href="https://www.facebook.com/Rip-City-Grill-116304401732933/" target="_blank" class="link--social">
+              <span class="icon icon--facebook">
+                <svg class="icon-svg">
+                  <use xlink:href="#icon-facebook" />
+                </svg>
+              </span>
+            </a>
+          </li>
         </ul>
       </nav>
 
       <nav class="nav--social">
         <ul>
           <li>
-            <a href="#" target="_blank" class="link--social">
+            <a href="https://www.instagram.com/ripcitygrill/" target="_blank" class="link--social">
               <span class="icon icon--instagram">
                 <svg class="icon-svg">
                   <use xlink:href="#icon-instagram" />
@@ -70,7 +88,7 @@
             </a>
           </li>
           <li>
-            <a href="#" target="_blank" class="link--social">
+            <a href="https://www.facebook.com/Rip-City-Grill-116304401732933/" target="_blank" class="link--social">
               <span class="icon icon--facebook">
                 <svg class="icon-svg">
                   <use xlink:href="#icon-facebook" />
@@ -78,17 +96,14 @@
               </span>
             </a>
           </li>
-          <li>
-            <a href="#" target="_blank" class="link--social">
-              <span class="icon icon--twitter">
-                <svg class="icon-svg">
-                  <use xlink:href="#icon-twitter" />
-                </svg>
-              </span>
-            </a>
-          </li>
         </ul>
       </nav>
+
+      <a href="#" class="mobile-nav-toggle js--mobile-nav-toggle">
+        <span class="bar bar--1"></span>
+        <span class="bar bar--2"></span>
+        <span class="bar bar--3"></span>
+      </a>
 
 
     </div>

@@ -1,0 +1,74 @@
+
+
+.reviews {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 -$padding;
+}
+
+.review {
+  color: $color-gray-dark;
+  margin-bottom: $padding/2;
+  position: relative;
+
+  blockquote {
+    padding: $padding;
+    margin: 0;
+    position: relative;
+    transition: background $timing $easing;
+  }
+  p {
+    @include font-size( $font-large );
+    @include font-bold();
+    padding: 0 0 15px 35px;
+    position: relative;
+    &:before {
+      position: absolute;
+      top: -10px;
+      left: -5px;
+      @include font-size( $font-h1 + 30 );
+      content: "\201C";
+      line-height: 1;
+      opacity: 0.15;
+      width: 40px;
+    }
+  }
+  cite {
+    color: $color-blue;
+    padding: 0 0 0 35px;
+  }
+  .see-more {
+    color: $color-blue;
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    display: block;
+    @include font-bold();
+  }
+
+  @include breakpoint(medium) {
+    width: 25%;
+    margin-bottom: $padding;
+  }
+  @include breakpoint(large) {
+    &:hover {
+      blockquote {
+        background: $color-gray-light;
+      }
+      .see-more {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    blockquote {
+      padding: $padding $padding $padding*2;
+    }
+    .see-more {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all $timing $easing;
+      text-align: right;
+    }
+  }
+}

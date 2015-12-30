@@ -41,6 +41,7 @@ $color-brand-secondary: #da2f10;
 $color-gray: #737373;
 $color-gray-dark: #131313;
 $color-gray-light: #f8f8f8;
+$color-gray-bg: darken($color-gray-light, 2%);
 
 $color-yellow: #FFFC19;
 $color-blue: #1485CC;
@@ -60,13 +61,13 @@ $font-base: 16;
 
 $font-small: 11;
 $font-medium: 14;
-$font-large: 20;
+$font-large: 18;
 $font-huge: 50;
 
-$font-h1: 40;
-$font-h2: 34;
-$font-h3: 28;
-$font-h4: 22;
+$font-h1: 36;
+$font-h2: 30;
+$font-h3: 27;
+$font-h4: 24;
 $font-h5: 16;
 $font-h6: 14;
 
@@ -74,7 +75,7 @@ $line-height: 1.7 !default;
 $line-height-header: 1.2 !default;
 $line-height-alt: 1.5 !default;
 
-$font-os: "Open Sans", sans-serif;
+$font-lora: "Lora", serif;
 
 
 

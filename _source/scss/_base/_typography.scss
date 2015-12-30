@@ -11,8 +11,12 @@ html {
   background: #fff;
   color: $color-body-text;
   line-height: $line-height;
-  font-size: $font-base + px;
+  font-size: $font-medium + px;
   @include font-regular();
+
+  @include breakpoint(medium) {
+    font-size: $font-base + px;
+  }
 }
 
 body {
@@ -28,7 +32,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 p, ul, ol {
-  padding: 0 0 15px;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -39,7 +43,11 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  @include font-size($font-h1);
+  @include font-size($font-h1 - 5);
+
+  @include breakpoint(medium) {
+    @include font-size($font-h1);
+  }
 }
 
 h2, .h2 {
@@ -79,7 +87,11 @@ strong {
 
 .text--huge {
   line-height: $line-height-header;
-  @include font-size($font-huge);
+  @include font-size($font-huge - 20);
+
+  @include breakpoint(medium) {
+    @include font-size($font-huge);
+  }
 }
 
 code,

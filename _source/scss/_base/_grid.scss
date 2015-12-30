@@ -9,13 +9,40 @@
   display: flex;
   margin-right: auto;
   margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex-wrap: wrap;
+
+  @include breakpoint(medium) {
+    flex-wrap: nowrap;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 }
 
 .col {
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 1;
+
+  &.pad-r {
+    padding-right: 0;
+  }
+  &.pad-l {
+    padding-left: 0;
+  }
+
+  @include breakpoint(medium) {
+    max-width: 50%;
+    flex: 1;
+
+    &.pad-r {
+      padding-right: $padding;
+    }
+    &.pad-l {
+      padding-left: $padding;
+    }
+  }
 }
 
 // .full-width {

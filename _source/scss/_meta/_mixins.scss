@@ -28,19 +28,13 @@
 /*==========  FONTS  ==========*/
 
 @mixin font-regular() {
-  font-family: $font-os;
+  font-family: $font-lora;
   font-style: normal;
   font-weight: 400;
 }
 
-@mixin font-medium() {
-  font-family: $font-os;
-  font-style: normal;
-  font-weight: 600;
-}
-
 @mixin font-bold() {
-  font-family: $font-os;
+  font-family: $font-lora;
   font-style: normal;
   font-weight: 700;
 }

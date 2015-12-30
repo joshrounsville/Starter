@@ -94,29 +94,38 @@ textarea {
   .title {
     display: block;
     padding: 0 0 3px;
+    @include font-size( $font-medium );
   }
 
   input,
   textarea {
     display: block;
-    width: 70%;
+    width: 100%;
+    @include font-regular();
     @include font-size( $font-medium );
     border: 1px solid $color-gray-dark;
     border-radius: 0;
     padding: 12px 10px;
     transition: border $timing $easing;
-    background: #fff;
+    background: $color-gray-light;
+    -webkit-appearance: none;
 
     &:hover,
     &:focus {
       outline: 0;
       border-color: lighten( $color-gray-dark, 50% );
     }
+
+    &[type=date] {
+      height: 43px; // fix for the date element on mobile
+    }
   }
 
   button {
     margin-top: 15px;
     @include font-size( $font-base );
+    float: right;
+    min-width: 30%;
   }
 }
 
@@ -126,9 +135,15 @@ textarea {
   overflow: hidden;
   padding-right: 18px;
   background: transparent;
-  width: 70%;
+  width: 100%;
   display: block;
+  background: $color-gray-light;
   border: 1px solid $color-gray-dark;
+
+  &:hover,
+  &:focus {
+    border-color: lighten( $color-gray-dark, 50% );
+  }
 
   &:before {
     content: "";
@@ -161,6 +176,7 @@ textarea {
   left: 0;
   padding-left: 10px;
   width: 100%;
+  @include font-regular();
   @include font-size( $font-medium );
 }
 
