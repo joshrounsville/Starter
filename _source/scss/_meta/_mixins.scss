@@ -27,8 +27,8 @@
 
 /*==========  FONTS  ==========*/
 
-@mixin font-base() {
-  font-family: $font-base;
+@mixin font-regular() {
+  font-family: $font-regular;
   font-style: normal;
   font-weight: normal;
 }
@@ -37,6 +37,12 @@
   font-family: $font-highlight;
   font-style: normal;
   font-weight: normal;
+}
+
+@mixin font-bold() {
+  font-family: $font-bold;
+  font-style: normal;
+  font-weight: bold;
 }
 
 
