@@ -27,16 +27,16 @@
 
 /*==========  FONTS  ==========*/
 
-@mixin font-regular() {
-  font-family: $font-lora;
+@mixin font-base() {
+  font-family: $font-base;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
 }
 
-@mixin font-bold() {
-  font-family: $font-lora;
+@mixin font-highlight() {
+  font-family: $font-highlight;
   font-style: normal;
-  font-weight: 700;
+  font-weight: normal;
 }
 
 
