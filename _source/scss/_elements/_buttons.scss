@@ -13,8 +13,7 @@
   color: #fff;
   border: 1px solid $color-gray;
   transition: all $timing $easing;
-  &:hover,
-  &:focus {
+  &:hover {
     background: #4d4d4d;
     color: #fff;
     border: 1px solid #4d4d4d;

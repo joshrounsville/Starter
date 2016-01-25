@@ -173,7 +173,7 @@ gulp.task('html-build', function() {
     .pipe($.sass())
     .pipe($.concat('styles.css'))
     .pipe($.autoprefixer((["last 2 version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
-    .pipe($.minifyCss())
+    .pipe($.cssnano())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(build + '/css/'));
 
@@ -233,7 +233,7 @@ gulp.task('clean', del.bind(null, [build + '/*'], {dot: true}));
  * Copy files
  * ==================================== */
 gulp.task('copyfiles', function() {
-  return gulp.src([source + '/**/*.{ttf,woff,woff2,eof,svg,ico,xml,txt}', source + '/.htaccess'])
+  return gulp.src([source + '/**/*.{ttf,woff,woff2,eot,svg,ico,xml,txt}', source + '/.htaccess'])
     .pipe($.plumber(plumberConfig))
     .pipe(gulp.dest(build));
 });

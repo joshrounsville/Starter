@@ -61,9 +61,9 @@ html input[disabled] {
 
 input[type="checkbox"],
 input[type="radio"] {
-    padding: 0;
-    *height: 13px;
-    *width: 13px;
+  padding: 0;
+  *height: 13px;
+  *width: 13px;
 }
 
 input[type="search"] {
@@ -83,6 +83,8 @@ input::-moz-focus-inner {
 
 input,
 textarea {
+  -webkit-appearance: none;
+  border-radius: none;
   @include placeholder( $color-gray-light );
 }
 

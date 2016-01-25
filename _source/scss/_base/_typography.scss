@@ -19,12 +19,10 @@ body {
   //overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-}
 
-p, ul, ol {
-  padding: 0 0 15px;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -69,15 +67,6 @@ strong {
   font-weight: bold;
 }
 
-.text--highlight {
-  @include font-size($font-large);
-}
-
-.text--huge {
-  line-height: $line-height-header;
-  @include font-size($font-huge);
-}
-
 code,
 kbd,
 pre,
@@ -94,3 +83,29 @@ sup {
   vertical-align: baseline;
   @include font-size($font-small);
 }
+
+
+
+/*========== HELPER CLASSES ==========*/
+
+.text--highlight {
+  @include font-size($font-large);
+}
+
+.text--huge {
+  line-height: $line-height-header;
+  @include font-size($font-huge);
+}
+
+.text--center {
+  text-align: center;
+}
+
+.text--left {
+  text-align: left;
+}
+
+.text--right {
+  text-align: right;
+}
+

@@ -15,17 +15,6 @@
     notDesktop = body.css('margin-bottom') === '1px';
   });
 
-
-  //////// svg fallback
-  Modernizr.addTest('svgasimg', document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1'));
-
-  if ( !Modernizr.svgasimg ) {
-    $('img[src*="svg"]').attr('src', function() {
-      return $(this).attr('src').replace('.svg', '.png');
-    });
-  }
-
-
   //////// setup request animation frame shim
   (function() {
     var lastTime = 0;
@@ -63,7 +52,11 @@
 
 
   function main() {
-    console.log('Hello, World!');
+    var text = 'Hello world!';
+
+    return {
+      console.log('Hello, World!');
+    }
   }
 
   main();
