@@ -5,7 +5,7 @@
 /* ====================================
  * Define paths
  * ==================================== */
-var source = 'source';
+var source = '_source';
 var build = 'build';
 
 
@@ -117,7 +117,7 @@ gulp.task('html-default', function() {
     .pipe($.plumber(plumberConfig))
     .pipe($.fileInclude({
       prefix: '@@',
-      basepath: 'source/'
+      basepath: '_source/'
     }))
     .pipe($.inject(modernizrjs,
       { ignorePath: [build, source],
@@ -184,7 +184,7 @@ gulp.task('html-build', function() {
     .pipe($.plumber(plumberConfig))
     .pipe($.fileInclude({
       prefix: '@@',
-      basepath: 'source/'
+      basepath: '_source/'
     }))
     .pipe($.inject(modernizrjs,
       { ignorePath: [build, source],

@@ -11,8 +11,12 @@ html {
   background: #fff;
   color: $color-body-text;
   line-height: $line-height;
-  font-size: $font-base + px;
+  font-size: $font-medium + px;
   @include font-regular();
+
+  @include breakpoint(medium) {
+    font-size: $font-base + px;
+  }
 }
 
 body {
@@ -22,14 +26,13 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   line-height: $line-height-header;
   text-rendering: optimizeLegibility;
-  @include font-highlight();
+  @include font-bold();
 }
 
 h1, .h1 {
@@ -56,7 +59,6 @@ h6, .h6 {
   @include font-size($font-h6);
 }
 
-
 .small,
 small {
   @include font-size($font-small);
@@ -64,7 +66,7 @@ small {
 
 .strong,
 strong {
-  font-weight: bold;
+  @include font-bold();
 }
 
 code,

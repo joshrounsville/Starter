@@ -14,11 +14,15 @@
 }
 
 .order--1 {
-  order: 1;
+  @include breakpoint(medium) {
+    order: 1;
+  }
 }
 
 .order--2 {
-  order: 2;
+  @include breakpoint(medium) {
+    order: 2;
+  }
 }
 
 
@@ -84,6 +88,14 @@
 
 .flex--b-align-i {
   align-items: flex-end;
+}
+
+.flex--justify-space {
+  justify-content: space-between;
+}
+
+.flex--justify-center {
+  justify-content: center;
 }
 
 .align--vert {

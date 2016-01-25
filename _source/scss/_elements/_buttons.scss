@@ -4,20 +4,23 @@
 
 
 .btn {
-  display: inline-block;
-  padding: 10px 32px 9px;
+  display: block;
+  width: 100%;
+  padding: 10px 0 9px;
   text-align: center;
   text-decoration: none;
   outline: 0;
-  background: $color-gray;
-  color: #fff;
-  border: 1px solid $color-gray;
+  background: transparent;
+  color: $color-gray-dark;
+  border: 3px solid $color-gray-dark;
   transition: all $timing $easing;
+
   &:hover {
-    background: #4d4d4d;
+    background: $color-gray-dark;
     color: #fff;
-    border: 1px solid #4d4d4d;
+    @include font-bold();
   }
+
 
   &.btn--primary {
     @include font-size($font-large);
@@ -27,4 +30,12 @@
     @include font-size($font-small);
     padding: 8px 28px;
   }
+
+  @include breakpoint(medium) {
+    padding: 10px 32px 9px;
+    width: auto;
+    display: inline-block;
+  }
 }
+
+

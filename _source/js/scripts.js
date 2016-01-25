@@ -15,6 +15,7 @@
     notDesktop = body.css('margin-bottom') === '1px';
   });
 
+
   //////// setup request animation frame shim
   (function() {
     var lastTime = 0;
@@ -44,12 +45,7 @@
 
 
 
-
   //////////////////////////////// Functions ////////////////////////////////
-
-
-
-
 
   function main() {
     var text = 'Hello world!';
@@ -58,9 +54,6 @@
       console.log('Hello, World!');
     }
   }
-
-  main();
-
 
 
 } (window.jQuery, window, document));

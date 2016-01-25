@@ -89,6 +89,13 @@
   }
 }
 
+.pad-b-s {
+  padding-bottom: $padding;
+  @include breakpoint(medium) {
+    padding-bottom: inherit;
+  }
+}
+
 
 
 /*==========  PADDING HORIZONTAL ==========*/
