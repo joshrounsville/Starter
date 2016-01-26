@@ -1,5 +1,7 @@
 (function($, window, document) {
 
+  'use strict';
+
 
   //////////////////////////////// Helpers ////////////////////////////////
 
@@ -47,13 +49,25 @@
 
   //////////////////////////////// Functions ////////////////////////////////
 
-  function main() {
-    var text = 'Hello world!';
+  var main = (function() {
+    var text = 'Hello World!';
+
+    var changeHTML = function() {
+      var element = document.getElementById('js--headline');
+      console.log(element);
+      element.textContent = text;
+    };
 
     return {
-      console.log('Hello, World!');
-    }
-  }
+      callMain: function() {
+        changeHTML();
+        console.log(text);
+      }
+    };
+
+  })();
+
+  main.callMain();
 
 
 } (window.jQuery, window, document));

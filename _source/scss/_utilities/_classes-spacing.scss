@@ -9,22 +9,22 @@
   padding: $padding;
 }
 
-.pad-v {
+.pad--v {
   padding-top: $padding;
   padding-bottom: $padding;
 }
 
-.pad-v--2x {
+.pad--v-2x {
   padding-top: $padding*2;
   padding-bottom: $padding*2;
 }
 
-.pad-h {
+.pad--h {
   padding-right: $padding;
   padding-left: $padding;
 }
 
-.pad-h--2x {
+.pad--h-2x {
   padding-right: $padding*2;
   padding-left: $padding*2;
 }
@@ -33,27 +33,27 @@
 
 /*==========  PADDING TOP ==========*/
 
-.pad-t {
+.pad--t {
   padding-top: $padding;
 }
 
-.pad-t--2x {
+.pad--t-2x {
   padding-top: $padding*2;
 }
 
-.pad-t--20 {
+.pad--t-20 {
   padding-top: 20px;
 }
 
-.pad-t--10 {
+.pad--t-10 {
   padding-top: 10px;
 }
 
-.pad-t--0 {
+.pad--t-0 {
   padding-top: 0;
 }
 
-.pad-t-s--0 {
+.pad--t-0_s {
   @include breakpoint(medium) {
     padding-top: inherit;
   }
@@ -63,33 +63,33 @@
 
 /*==========  PADDING BOTTOM  ==========*/
 
-.pad-b {
+.pad--b {
   padding-bottom: $padding;
 }
 
-.pad-b--2x {
+.pad--b-2x {
   padding-bottom: $padding*2;
 }
 
-.pad-b--20 {
+.pad--b-20 {
   padding-bottom: 20px;
 }
 
-.pad-b--10 {
+.pad--b-10 {
   padding-bottom: 10px;
 }
 
-.pad-b--0 {
+.pad--b-0 {
   padding-bottom: 0;
 }
 
-.pad-b-s--0 {
+.pad--b-0_s {
   @include breakpoint(medium) {
     padding-bottom: inherit;
   }
 }
 
-.pad-b-s {
+.pad--b_s {
   padding-bottom: $padding;
   @include breakpoint(medium) {
     padding-bottom: inherit;
@@ -100,11 +100,11 @@
 
 /*==========  PADDING HORIZONTAL ==========*/
 
-.pad-r {
+.pad--r {
   padding-right: $padding;
 }
 
-.pad-l {
+.pad--l {
   padding-left: $padding;
 }
 
@@ -117,12 +117,12 @@
   margin: $margin;
 }
 
-.mar-v {
+.mar--v {
   margin-top: $margin;
   margin-bottom: $margin;
 }
 
-.mar-h {
+.mar--h {
   margin-right: $margin;
   margin-left: $margin;
 }
@@ -132,23 +132,23 @@
 
 /*==========  MARGIN TOP  ==========*/
 
-.mar-t {
+.mar--t {
   margin-top: $margin;
 }
 
-.mar-t--2x {
+.mar--t-2x {
   margin-top: $margin*2;
 }
 
-.mar-t--20 {
+.mar--t-20 {
   margin-top: 20px;
 }
 
-.mar-t--10 {
+.mar--t-10 {
   margin-top: 10px;
 }
 
-.mar-t--0 {
+.mar--t-0 {
   margin-top: 0;
 }
 
@@ -157,22 +157,22 @@
 
 /*==========  MARGIN BOTTOM  ==========*/
 
-.mar-b {
+.mar--b {
   margin-bottom: $margin;
 }
 
-.mar-b--2x {
+.mar--b-2x {
   margin-bottom: $margin*2;
 }
 
-.mar-b--20 {
+.mar--b-20 {
   margin-bottom: 20px;
 }
 
-.mar-b--10 {
+.mar--b-10 {
   margin-bottom: 10px;
 }
 
-.mar-b--0 {
+.mar--b-0 {
   margin-bottom: 0;
 }
