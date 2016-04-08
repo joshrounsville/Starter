@@ -1,33 +1,25 @@
-/* ==========================================================================
-  Grid - Based on the Twitter Bootstrap
-========================================================================== */
 
-
-.full-width {
-  position: relative;
-  width: 100%;
-}
 
 .container {
   padding-right: 10px;
   padding-left: 10px;
   margin-right: auto;
   margin-left: auto;
-  display: block;
-  @include clearfix();
+  display: flex;
+  flex-direction: column;
 }
 
 .row {
   margin-right: -10px;
   margin-left: -10px;
-  display: block;
-  @include clearfix();
+  display: flex;
+  flex-wrap: wrap;
 }
 
 [class*="span"] {
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  min-height: 1px;
   padding-right: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
@@ -39,13 +31,10 @@
 
 @include breakpoint(x-small) {
 
-  [class*="span-xs"] {
-    float: left;
-  }
-
-  @for $i from 1 through $grid-columns {
+  @for $i from 0 through $grid-columns {
     .span-xs-#{$i} {
-      width: (100%/$grid-columns) * $i;
+      flex-basis: (100%/$grid-columns) * $i;
+      max-width: (100%/$grid-columns) * $i;
     }
     .offset-xs-#{$i} {
       margin-left: (100%/$grid-columns) * $i;
@@ -59,13 +48,10 @@
 
 @include breakpoint(small) {
 
-  [class*="span-s"] {
-    float: left;
-  }
-
-  @for $i from 1 through $grid-columns {
+  @for $i from 0 through $grid-columns {
     .span-s-#{$i} {
-      width: (100%/$grid-columns) * $i;
+      flex-basis: (100%/$grid-columns) * $i;
+      max-width: (100%/$grid-columns) * $i;
     }
     .offset-s-#{$i} {
       margin-left: (100%/$grid-columns) * $i;
@@ -80,44 +66,17 @@
 @include breakpoint(medium) {
 
   .container {
-    @if $enable-flex {
-      display: flex;
-      flex-direction: column;
-    }
-
     width: $medium;
   }
 
-  @if $enable-flex {
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-
-      &:before,
-      &:after {
-        clear: none;
-        display: block;
-      }
-    }
-  }
-
-
   [class*="span"] {
-    @if $enable-flex {
-      display: flex;
-      flex-direction: column;
-    } @else {
-      float: left;
-    }
+    padding-bottom: 0;
   }
 
-  @for $i from 1 through $grid-columns {
+  @for $i from 0 through $grid-columns {
     .span-#{$i} {
-      @if $enable-flex {
-        flex: 0 0 (100%/$grid-columns) * $i;
-      } @else {
-        width: (100%/$grid-columns) * $i;
-      }
+      flex-basis: (100%/$grid-columns) * $i;
+      max-width: (100%/$grid-columns) * $i;
     }
     .offset-#{$i} {
       margin-left: (100%/$grid-columns) * $i;
@@ -135,13 +94,10 @@
     width: $large;
   }
 
-  @for $i from 1 through $grid-columns {
+  @for $i from 0 through $grid-columns {
     .span-l-#{$i} {
-      @if $enable-flex {
-        flex: 0 0 (100%/$grid-columns) * $i;
-      } @else {
-        width: (100%/$grid-columns) * $i;
-      }
+      flex-basis: (100%/$grid-columns) * $i;
+      max-width: (100%/$grid-columns) * $i;
     }
     .offset-l-#{$i} {
       margin-left: (100%/$grid-columns) * $i;
@@ -172,13 +128,10 @@
     padding-left: $grid-gutter-width/2;
   }
 
-  @for $i from 1 through $grid-columns {
+  @for $i from 0 through $grid-columns {
     .span-xl-#{$i} {
-      @if $enable-flex {
-        flex: 0 0 (100%/$grid-columns) * $i;
-      } @else {
-        width: (100%/$grid-columns) * $i;
-      }
+      flex-basis: (100%/$grid-columns) * $i;
+      max-width: (100%/$grid-columns) * $i;
     }
     .offset-xl-#{$i} {
       margin-left: (100%/$grid-columns) * $i;

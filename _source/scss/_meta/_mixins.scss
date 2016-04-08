@@ -1,6 +1,3 @@
-/* ==========================================================================
-  Mixins
-========================================================================== */
 
 
 /*==========  SETUP BREAKPOINTS  ==========*/
@@ -28,19 +25,19 @@
 /*==========  FONTS  ==========*/
 
 @mixin font-regular() {
-  font-family: $font-regular;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-style: normal;
   font-weight: normal;
 }
 
 @mixin font-highlight() {
-  font-family: $font-highlight;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-style: normal;
   font-weight: normal;
 }
 
 @mixin font-bold() {
-  font-family: $font-bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-style: normal;
   font-weight: bold;
 }
@@ -74,13 +71,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-
-@mixin v-align() {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 
