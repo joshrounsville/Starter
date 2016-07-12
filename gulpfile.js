@@ -19,7 +19,6 @@ var reload = browserSync.reload;
 var runSequence = require('run-sequence');
 var del = require('del');
 var es = require('event-stream');
-var bowerFiles = require('main-bower-files');
 
 var plumberConfig = {errorHandler: $.notify.onError("Error: <%= error.message %>")};
 
@@ -90,15 +89,9 @@ gulp.task('images', function() {
  * HTML
  * ==================================== */
 gulp.task('html-default', function() {
-
-  var vendorjs = gulp.src(bowerFiles())
-    .pipe($.plumber(plumberConfig))
-    .pipe($.filter('**/*.js'))
-    .pipe(gulp.dest(build + '/js/vendor'));
-
-  var modernizrjs = gulp.src(source + '/js/vendor/modernizr.js')
-    .pipe($.plumber(plumberConfig))
-    .pipe(gulp.dest(build + '/js/vendor'));
+  // var modernizrjs = gulp.src(source + '/js/vendor/modernizr.js')
+  //   .pipe($.plumber(plumberConfig))
+  //   .pipe(gulp.dest(build + '/js/vendor'));
 
   var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
     .pipe($.plumber(plumberConfig))
@@ -119,21 +112,12 @@ gulp.task('html-default', function() {
       prefix: '@@',
       basepath: '_source/'
     }))
-    .pipe($.inject(modernizrjs,
-      { ignorePath: [build, source],
-        addRootSlash: true,
-        starttag: '<!-- inject:modernizr -->'
-      }
-    ))
-    .pipe($.inject(es.merge(
-        vendorjs
-      ),
-      {
-        name: 'bower',
-        ignorePath: [build, source],
-        addRootSlash: true
-      }
-    ))
+    // .pipe($.inject(modernizrjs,
+    //   { ignorePath: [build, source],
+    //     addRootSlash: true,
+    //     starttag: '<!-- inject:modernizr -->'
+    //   }
+    // ))
     .pipe($.inject(es.merge(
       styles,
       scripts
@@ -148,19 +132,11 @@ gulp.task('html-default', function() {
 
 gulp.task('html-build', function() {
 
-  var modernizrjs = gulp.src(source + '/js/vendor/modernizr.js')
-    .pipe($.plumber(plumberConfig))
-    .pipe($.uglify())
-    .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(build + '/js/vendor'));
-
-  var vendorjs = gulp.src(bowerFiles())
-    .pipe($.plumber(plumberConfig))
-    .pipe($.filter('**/*.js'))
-    .pipe($.concat('bower-scripts.js'))
-    .pipe($.uglify())
-    .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(build + '/js/vendor'));
+  // var modernizrjs = gulp.src(source + '/js/vendor/modernizr.js')
+  //   .pipe($.plumber(plumberConfig))
+  //   .pipe($.uglify())
+  //   .pipe($.rename({suffix: '.min'}))
+  //   .pipe(gulp.dest(build + '/js/vendor'));
 
   var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
     .pipe($.plumber(plumberConfig))
@@ -186,21 +162,12 @@ gulp.task('html-build', function() {
       prefix: '@@',
       basepath: '_source/'
     }))
-    .pipe($.inject(modernizrjs,
-      { ignorePath: [build, source],
-        addRootSlash: true,
-        starttag: '<!-- inject:modernizr -->'
-      }
-    ))
-    .pipe($.inject(es.merge(
-        vendorjs
-      ),
-      {
-        name: 'bower',
-        ignorePath: [build, source],
-        addRootSlash: true
-      }
-    ))
+    // .pipe($.inject(modernizrjs,
+    //   { ignorePath: [build, source],
+    //     addRootSlash: true,
+    //     starttag: '<!-- inject:modernizr -->'
+    //   }
+    // ))
     .pipe($.inject(es.merge(
       styles,
       scripts
