@@ -1,4 +1,4 @@
-(function($, window, document) {
+(function() {
 
   'use strict';
 
@@ -6,7 +6,7 @@
   //////////////////////////////// Helpers ////////////////////////////////
 
   //////// set booleans for window size
-  var body = $('body');
+  var body = document.body;
   var isPhone = body.css('padding-bottom') === '1px';
   var isDesktop = body.css('margin-bottom') !== '1px';
   var notDesktop = body.css('margin-bottom') === '1px';
@@ -70,4 +70,4 @@
   main.callMain();
 
 
-} (window.jQuery, window, document));
+} ());
