@@ -1,5 +1,4 @@
 (function() {
-
   'use strict';
 
 
@@ -7,14 +6,16 @@
 
   //////// set booleans for window size
   var body = document.body;
-  var isPhone = body.css('padding-bottom') === '1px';
-  var isDesktop = body.css('margin-bottom') !== '1px';
-  var notDesktop = body.css('margin-bottom') === '1px';
+  var cs = window.getComputedStyle(body, null);
 
-  $(window).resize(function() {
-    isPhone = body.css('padding-bottom') === '1px';
-    isDesktop = body.css('margin-bottom') !== '1px';
-    notDesktop = body.css('margin-bottom') === '1px';
+  var isPhone = cs.paddingBottom === '1px';
+  var isDesktop = cs.paddingBottom!== '1px';
+  var notDesktop = cs.paddingBottom === '1px';
+
+  window.addEventListener('resize', function() {
+    isPhone = cs.paddingBottom === '1px';
+    isDesktop = cs.paddingBottom !== '1px';
+    notDesktop = cs.paddingBottom === '1px';
   });
 
 
