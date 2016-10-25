@@ -1,5 +1,5 @@
 {
-  "name": "starter-files",
+  "name": "Starter",
   "version": "3.0.0",
   "description": "Based on Nathan Searles Day One Gulp Starter Kit - https://github.com/nathansearles/Day-One-Gulp-Starter-Kit",
   "devDependencies": {
@@ -13,14 +13,14 @@
     "gulp-cssnano": "^2.1.0",
     "gulp-file-include": "^0.13.7",
     "gulp-filter": "^3.0.1",
-    "gulp-htmlmin": "^1.3.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.0",
     "gulp-imagemin": "^2.4.0",
     "gulp-inject": "^3.0.0",
     "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
-    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",

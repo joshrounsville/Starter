@@ -19,8 +19,12 @@ var reload = browserSync.reload;
 var runSequence = require('run-sequence');
 var del = require('del');
 var es = require('event-stream');
+var htmlmin = require('gulp-htmlmin');
+var gulpif = require('gulp-if');
 
 var plumberConfig = {errorHandler: $.notify.onError("Error: <%= error.message %>")};
+
+var minify = false;
 
 
 /* ====================================
@@ -44,8 +48,10 @@ gulp.task('styles', function () {
   return gulp.src(source + '/scss/**/components.scss')
     .pipe($.plumber(plumberConfig))
     .pipe($.sass())
-    .pipe($.autoprefixer((["last 2  version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
-    .pipe(gulp.dest(build + '/css/'));
+    .pipe($.concat('styles.css'))
+    .pipe($.autoprefixer((["last 2 version", "> 1%", "ie 10"], { cascade: true })))
+    .pipe(gulpif(minify, $.cssnano()))
+    .pipe(gulp.dest(build + '/css'));
 });
 
 
@@ -60,8 +66,10 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('scripts', function () {
-  return gulp.src([source + '/js/plugins.js', source + '/js/**/*'])
+  return gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
     .pipe($.plumber(plumberConfig))
+    .pipe($.concat('app.js'))
+    .pipe(gulpif(minify, $.uglify()))
     .pipe(gulp.dest(build + '/js'));
 });
 
@@ -88,21 +96,7 @@ gulp.task('images', function() {
 /* ====================================
  * HTML
  * ==================================== */
-gulp.task('html-default', function() {
-  // var modernizrjs = gulp.src(source + '/js/vendor/modernizr.js')
-  //   .pipe($.plumber(plumberConfig))
-  //   .pipe(gulp.dest(build + '/js/vendor'));
-
-  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
-    .pipe($.plumber(plumberConfig))
-    .pipe(gulp.dest(build + '/js'));
-
-  var styles = gulp.src(source + '/scss/**/components.scss')
-    .pipe($.plumber(plumberConfig))
-    .pipe($.sass())
-    .pipe($.autoprefixer((["last 2 version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
-    .pipe(gulp.dest(build + '/css/'));
-
+gulp.task('html', function() {
   return gulp.src([
       source + '/htdocs/**/*.html',
       '!' + source + '/htdocs/_templates{,/**}'
@@ -112,74 +106,9 @@ gulp.task('html-default', function() {
       prefix: '@@',
       basepath: '_source/'
     }))
-    // .pipe($.inject(modernizrjs,
-    //   { ignorePath: [build, source],
-    //     addRootSlash: true,
-    //     starttag: '<!-- inject:modernizr -->'
-    //   }
-    // ))
-    .pipe($.inject(es.merge(
-      styles,
-      scripts
-    ),
-      {
-        ignorePath: [build, source],
-        addRootSlash: true
-      }
-    ))
+    .pipe(gulpif(minify, htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest(build));
 });
-
-gulp.task('html-build', function() {
-
-  // var modernizrjs = gulp.src(source + '/js/vendor/modernizr.js')
-  //   .pipe($.plumber(plumberConfig))
-  //   .pipe($.uglify())
-  //   .pipe($.rename({suffix: '.min'}))
-  //   .pipe(gulp.dest(build + '/js/vendor'));
-
-  var scripts = gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
-    .pipe($.plumber(plumberConfig))
-    .pipe($.concat('scripts.js'))
-    .pipe($.uglify())
-    .pipe(gulp.dest(build + '/js'));
-
-  var styles = gulp.src(source + '/scss/**/*.scss')
-    .pipe($.plumber(plumberConfig))
-    .pipe($.sass())
-    .pipe($.concat('styles.css'))
-    .pipe($.autoprefixer((["last 2 version", "> 1%", "ie 8", "ie 7"], { cascade: true })))
-    .pipe($.cssnano())
-    .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(build + '/css/'));
-
-  return gulp.src([
-      source + '/htdocs/**/*.html',
-      '!' + source + '/htdocs/_templates{,/**}'
-    ])
-    .pipe($.plumber(plumberConfig))
-    .pipe($.fileInclude({
-      prefix: '@@',
-      basepath: '_source/'
-    }))
-    // .pipe($.inject(modernizrjs,
-    //   { ignorePath: [build, source],
-    //     addRootSlash: true,
-    //     starttag: '<!-- inject:modernizr -->'
-    //   }
-    // ))
-    .pipe($.inject(es.merge(
-      styles,
-      scripts
-    ),
-      {
-        ignorePath: [build, source],
-        addRootSlash: true
-      }
-    ))
-    .pipe($.htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest(build));
-  });
 
 
 /* ====================================
@@ -213,15 +142,17 @@ gulp.task('copyfiles', function() {
 // For local development
 gulp.task('default', ['clean'], function(){
   runSequence(
-    ['html-default', 'images', 'copyfiles'],
+    ['html', 'styles', 'scripts', 'images', 'copyfiles'],
     ['serve']
   );
 });
 
 // For staging/production deployment
 gulp.task('build', ['clean'], function(){
+  minify = true,
+
   runSequence(
-    ['html-build', 'images', 'copyfiles']
+    ['html', 'styles', 'scripts', 'images', 'copyfiles']
   );
 });
 
@@ -236,5 +167,5 @@ gulp.task('watch', function() {
 
   gulp.watch(source + '/img/**/*', ['images', reload]);
 
-  gulp.watch(source + '/htdocs/**/*', ['html-default', reload]);
+  gulp.watch(source + '/htdocs/**/*', ['html', reload]);
 });
