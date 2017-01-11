@@ -1,0 +1,43 @@
+Arguments: 
+  /usr/local/bin/node /Users/joshrounsville/.yarn/bin/yarn.js init
+
+PATH: 
+  /Users/joshrounsville/.yarn/bin:/Users/joshrounsville/.rvm/gems/ruby-2.2.2/bin:/Users/joshrounsville/.rvm/gems/ruby-2.2.2@global/bin:/Users/joshrounsville/.rvm/rubies/ruby-2.2.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/Users/joshrounsville/.rvm/bin:/Users/joshrounsville/.rvm/bin:/usr/local/sbin
+
+Yarn version: 
+  0.16.1
+
+Node version: 
+  6.4.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "Starter",
+    "version": "3.0.0",
+    "description": "Based on Nathan Searles Day One Gulp Starter Kit - https://github.com/nathansearles/Day-One-Gulp-Starter-Kit",
+  }
+
+yarn manifest: 
+  No manifest
+
+bower manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  SyntaxError: /Users/joshrounsville/Github/Starter/package.json: Unexpected token } in JSON at position 174
+      at Object.parse (native)
+      at Object.<anonymous> (/Users/joshrounsville/.yarn/lib/util/fs.js:271:57)
+      at next (native)
+      at step (/Users/joshrounsville/.yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at /Users/joshrounsville/.yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:28:20
+      at run (/Users/joshrounsville/.yarn/node_modules/core-js/library/modules/es6.promise.js:87:22)
+      at /Users/joshrounsville/.yarn/node_modules/core-js/library/modules/es6.promise.js:100:28
+      at flush (/Users/joshrounsville/.yarn/node_modules/core-js/library/modules/_microtask.js:18:9)
+      at _combinedTickCallback (internal/process/next_tick.js:67:7)
+      at process._tickCallback (internal/process/next_tick.js:98:9)

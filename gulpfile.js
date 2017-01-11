@@ -21,6 +21,7 @@ var del = require('del');
 var es = require('event-stream');
 var htmlmin = require('gulp-htmlmin');
 var gulpif = require('gulp-if');
+var babel = require('gulp-babel');
 
 var plumberConfig = {errorHandler: $.notify.onError("Error: <%= error.message %>")};
 
@@ -66,11 +67,20 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('scripts', function () {
-  return gulp.src([source + '/js/plugins.js', source + '/js/scripts.js'])
+  return gulp.src([source + '/js/**/*', '!' + source + '/js/vendor/**/*'])
     .pipe($.plumber(plumberConfig))
+    .pipe(babel())
     .pipe($.concat('app.js'))
     .pipe(gulpif(minify, $.uglify()))
     .pipe(gulp.dest(build + '/js'));
+});
+
+gulp.task('vendorScripts', function () {
+  return gulp.src(source + '/js/vendor/**/*')
+    .pipe($.plumber(plumberConfig))
+    .pipe($.concat('vendors.js'))
+    .pipe(gulpif(minify, $.uglify()))
+    .pipe(gulp.dest(build + '/js/vendor/'));
 });
 
 
@@ -142,7 +152,7 @@ gulp.task('copyfiles', function() {
 // For local development
 gulp.task('default', ['clean'], function(){
   runSequence(
-    ['html', 'styles', 'scripts', 'images', 'copyfiles'],
+    ['html', 'styles', 'scripts', 'vendorScripts', 'images', 'copyfiles'],
     ['serve']
   );
 });
@@ -152,7 +162,7 @@ gulp.task('build', ['clean'], function(){
   minify = true,
 
   runSequence(
-    ['html', 'styles', 'scripts', 'images', 'copyfiles']
+    ['html', 'styles', 'scripts', 'vendorScripts', 'images', 'copyfiles']
   );
 });
 
@@ -164,6 +174,8 @@ gulp.task('watch', function() {
   gulp.watch(source + '/scss/**/*.scss', ['styles', reload]);
 
   gulp.watch(source + '/js/**/*.js', ['jshint', 'scripts', reload]);
+
+  gulp.watch(source + '/js/vendor/**/*.js', ['vendorScripts', reload]);
 
   gulp.watch(source + '/img/**/*', ['images', reload]);
 
