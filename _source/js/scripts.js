@@ -1,4 +1,4 @@
-(function() {
+(() => {
 //////////////////////////////// Helpers ////////////////////////////////
 
 //////// set booleans for window size
@@ -15,8 +15,6 @@ window.addEventListener('resize', function() {
   notDesktop = cs.paddingBottom === '1px';
 });
 
-
-
 //////////////////////////////// Functions ////////////////////////////////
 
 const changeHTML = (name) => {
@@ -27,4 +25,4 @@ const changeHTML = (name) => {
 
 changeHTML('Joshua');
 
-}());
+})();
