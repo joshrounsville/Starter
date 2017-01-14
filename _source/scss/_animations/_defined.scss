@@ -1,12 +1,9 @@
 
-
 @for $i from 1 through 20 {
-  .delay--#{$i} {
+  .Animation--delay-#{$i} {
     animation-delay: 0.1s + ($i*0.04);
   }
 }
-
-
 
 /*==========  FADE IN  ==========*/
 
@@ -18,8 +15,6 @@
     opacity: 1;
   }
 }
-
-
 
 /*==========  FADE OUT  ==========*/
 

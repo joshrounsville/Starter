@@ -1,6 +1,5 @@
 
-
-.container {
+.Container {
   padding-right: 10px;
   padding-left: 10px;
   margin-right: auto;
@@ -9,137 +8,117 @@
   flex-direction: column;
 }
 
-.row {
+.Row {
   margin-right: -10px;
   margin-left: -10px;
   display: flex;
   flex-wrap: wrap;
 }
 
-[class*="span"] {
+[class*="Span"] {
   display: flex;
   flex-direction: column;
   position: relative;
   padding-right: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
-  width: auto;
+  width: 100%;
 }
-
 
 /*==========  EXTRA SMALL SCREEN  ==========*/
 
 @include breakpoint(x-small) {
-
   @for $i from 0 through $grid-columns {
-    .span-xs-#{$i} {
+    .Span--#{$i}-xs {
       flex-basis: (100%/$grid-columns) * $i;
       max-width: (100%/$grid-columns) * $i;
     }
-    .offset-xs-#{$i} {
+    .Offset--#{$i}-xs {
       margin-left: (100%/$grid-columns) * $i;
     }
   }
-
 }
-
 
 /*==========  SMALL SCREEN  ==========*/
 
 @include breakpoint(small) {
-
   @for $i from 0 through $grid-columns {
-    .span-s-#{$i} {
+    .Span--#{$i}-s {
       flex-basis: (100%/$grid-columns) * $i;
       max-width: (100%/$grid-columns) * $i;
     }
-    .offset-s-#{$i} {
+    .Offset--#{$i}-s {
       margin-left: (100%/$grid-columns) * $i;
     }
   }
-
 }
-
 
 /*==========  MEDIUM SCREEN  ==========*/
 
 @include breakpoint(medium) {
-
-  .container {
+  .Container {
     width: $medium;
   }
 
-  [class*="span"] {
+  [class*="Span"] {
     padding-bottom: 0;
   }
 
   @for $i from 0 through $grid-columns {
-    .span-#{$i} {
+    .Span--#{$i} {
       flex-basis: (100%/$grid-columns) * $i;
       max-width: (100%/$grid-columns) * $i;
     }
-    .offset-#{$i} {
+    .Offset--#{$i} {
       margin-left: (100%/$grid-columns) * $i;
     }
   }
-
 }
-
 
 /*==========  LARGE SCREEN  ==========*/
 
 @include breakpoint(large) {
-
-  .container {
+  .Container {
     width: $large;
   }
 
   @for $i from 0 through $grid-columns {
-    .span-l-#{$i} {
+    .Span--#{$i}-l {
       flex-basis: (100%/$grid-columns) * $i;
       max-width: (100%/$grid-columns) * $i;
     }
-    .offset-l-#{$i} {
+    .Offset--#{$i}-l {
       margin-left: (100%/$grid-columns) * $i;
     }
   }
-
 }
-
-
 
 /*==========  EXTRA LARGE SCREEN  ==========*/
 
 @include breakpoint(x-large) {
-
-  .container {
+  .Container {
     width: $x-large;
     padding-right: $grid-gutter-width/2;
     padding-left: $grid-gutter-width/2;
   }
 
-  .row {
+  .Row {
     margin-right: -$grid-gutter-width/2;
     margin-left: -$grid-gutter-width/2;
   }
 
-  [class*="span"] {
+  [class*="Span"] {
     padding-right: $grid-gutter-width/2;
     padding-left: $grid-gutter-width/2;
   }
 
   @for $i from 0 through $grid-columns {
-    .span-xl-#{$i} {
+    .Span--#{$i}-xl {
       flex-basis: (100%/$grid-columns) * $i;
       max-width: (100%/$grid-columns) * $i;
     }
-    .offset-xl-#{$i} {
+    .Offset--#{$i}-xl {
       margin-left: (100%/$grid-columns) * $i;
     }
   }
-
 }
-
-
-
-

@@ -1,128 +1,44 @@
-/* ==========================================================================
-  Classes
-========================================================================== */
-
-
 /*==========  FLOATS/ORDER  ==========*/
 
-.left {
+.Left {
   float: left;
 }
 
-.right {
+.Right {
   float: right;
 }
 
-.order--1 {
+.Order--1 {
   @include breakpoint(medium) {
     order: 1;
   }
 }
 
-.order--2 {
+.Order--2 {
   @include breakpoint(medium) {
     order: 2;
   }
 }
 
-
-
 /*==========  BACKGROUND  ==========*/
 
-.bg--white {
-  background-color: #fff;
+.Bg--white {
+  background-color: $color-white;
 }
 
-.bg--gray {
+.Bg--gray {
   background-color: $color-gray;
 }
 
-
-
-/*==========  BORDER  ==========*/
-
-.border--inline {
-  position: relative;
-  text-align: center;
-  &:after {
-    content: "";
-    display: block;
-    height: 2px;
-    background: #fff;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    left: 0;
-    margin-top: -1px;
-  }
-  .text {
-    display: inline-block;
-    background: #333;
-    padding: 0 8px;
-  }
-}
-
-
-
-/*==========  ALIGNMENT  ==========*/
-
-.flex--v-align-s {
-  align-self: center;
-}
-
-.flex--v-align-i {
-  align-items: center;
-}
-
-.flex--t-align-s {
-  align-self: flex-start;
-}
-
-.flex--t-align-i {
-  align-items: flex-start;
-}
-
-.flex--b-align-s {
-  align-self: flex-end;
-}
-
-.flex--b-align-i {
-  align-items: flex-end;
-}
-
-.flex--justify-space {
-  justify-content: space-between;
-}
-
-.flex--justify-center {
-  justify-content: center;
-}
-
-.align--horz {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-
-
-/*==========  HIDE  ==========*/
-
-.hide {
-  display: none;
-  visibility: hidden;
-}
-
-
-
 /*==========  UTILITIES  ==========*/
 
-.break {
+.Break {
   @include breakpoint(x-large) {
     display: block;
   }
 }
 
-.truncate {
+.Truncate {
   @include ellipsis();
 }
 

@@ -1,5 +1,4 @@
 
-
 /*==========  DEFINE BREAKPOINTS  ==========*/
 
 $x-small: 1px !default;
@@ -8,26 +7,22 @@ $medium: 760px !default;
 $large: 1080px !default;
 $x-large: 1300px !default;
 
-
-
 /*==========  GRID  ==========*/
 
 $grid-columns: 12;
 $grid-gutter-width: 30px;
-
-
 
 /*==========  SPACING  ==========*/
 
 $padding: 30px;
 $margin: 20px;
 
-
-
 /*==========  COLORS  ==========*/
 
 $color-brand: #da2f10;
 $color-brand-secondary: #da2f10;
+
+$color-white: #fff;
 
 $color-gray: #737373;
 $color-gray-dark: #404040;
@@ -40,8 +35,6 @@ $color-body-text: $color-gray-dark;
 
 $color-link: $color-brand;
 $color-link-hover: darken( $color-brand, 10% );
-
-
 
 /*==========  TEXT  ==========*/
 
@@ -64,12 +57,8 @@ $line-height: 1.7 !default;
 $line-height-header: 1.2 !default;
 $line-height-alt: 1.5 !default;
 
-
-
 /*==========  OTHERS  ==========*/
 
 $timing: 0.15s;
 $easing: cubic-bezier(0.455, 0.030, 0.515, 0.955);
-
-
 
