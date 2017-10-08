@@ -1,4 +1,3 @@
-
 form {
   margin: 0;
 }
@@ -43,9 +42,9 @@ select {
 }
 
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+html input[type='button'],
+input[type='reset'],
+input[type='submit'] {
   -webkit-appearance: button;
   cursor: pointer;
   *overflow: visible;
@@ -56,16 +55,17 @@ html input[disabled] {
   cursor: default;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type='checkbox'],
+input[type='radio'] {
   padding: 0;
   *height: 13px;
   *width: 13px;
 }
 
-input[type="search"] {
+input[type='search'] {
   appearance: none;
   border-radius: 0;
+
   &::-webkit-search-cancel-button,
   &::-webkit-search-decoration {
     -webkit-appearance: none;
@@ -80,7 +80,7 @@ input::-moz-focus-inner {
 
 input,
 textarea {
+  @include placeholder( $color-gray-light );
   -webkit-appearance: none;
   border-radius: none;
-  @include placeholder( $color-gray-light );
 }
