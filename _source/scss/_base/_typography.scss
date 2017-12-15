@@ -1,15 +1,12 @@
-
-
 // html, body, button {
 //   -webkit-font-smoothing: antialiased;
 // }
 
 html {
-  background: $color-body-bg;
   color: $color-body-text;
   line-height: $line-height;
   font-size: $font-medium + px;
-  @include font-regular();
+  @include font-helvetica();
 
   @include breakpoint(medium) {
     font-size: $font-base + px;
@@ -20,48 +17,73 @@ body {
   //overflow-x: hidden;
 }
 
-
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.Text--size-h1,
+.Text--size-h2,
+.Text--size-h3,
+.Text--size-h4,
+.Text--size-h5,
+.Text--size-h6 {
   line-height: $line-height-header;
   text-rendering: optimizeLegibility;
-  @include font-highlight();
 }
 
-h1, .h1 {
+h1,
+.Text--size-h1 {
   @include font-size($font-h1);
+  @include font-medium();
 }
 
-h2, .h2 {
+h2,
+.Text--size-h2 {
   @include font-size($font-h2);
+  @include font-medium();
 }
 
-h3, .h3 {
+h3,
+.Text--size-h3 {
   @include font-size($font-h3);
+  @include font-medium();
 }
 
-h4, .h4 {
+h4,
+.Text--size-h4 {
   @include font-size($font-h4);
+  @include font-bold();
 }
 
-h5, .h5 {
+h5,
+.Text--size-h5 {
   @include font-size($font-h5);
+  @include font-bold();
 }
 
-h6, .h6 {
+h6,
+.Text--size-h6 {
   @include font-size($font-h6);
+  @include font-bold();
 }
 
-.small,
+.Text--size-small,
 small {
   @include font-size($font-small);
 }
 
-.strong,
+.Text--weight-strong,
 strong {
   @include font-bold();
 }
@@ -83,28 +105,25 @@ sup {
   @include font-size($font-small);
 }
 
-
-
 /*========== HELPER CLASSES ==========*/
 
-.text--highlight {
+.Text--size-highlight {
   @include font-size($font-large);
 }
 
-.text--huge {
+.Text--size-huge {
   line-height: $line-height-header;
   @include font-size($font-huge);
 }
 
-.text--center {
+.Text--align-center {
   text-align: center;
 }
 
-.text--left {
+.Text--align-left {
   text-align: left;
 }
 
-.text--right {
+.Text--align-right {
   text-align: right;
 }
-
